@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth Patel | Professional Dashboard</title>
+
+<style>
+:root {
+  --primary:#2563eb;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --bg:#f8fafc;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.6;
+}
+
+header {
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:3rem 1rem;
+}
+
+header img {
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--primary);
+  margin-bottom:1rem;
+}
+
+header h1 {
+  font-size:2.2rem;
+}
+
+header p {
+  color:#cbd5f5;
+  margin-top:.5rem;
+}
+
+section {
+  max-width:1150px;
+  margin:auto;
+  padding:3rem 1.5rem;
+}
+
+h2 {
+  font-size:1.8rem;
+  margin-bottom:1.5rem;
+  border-left:5px solid var(--primary);
+  padding-left:.75rem;
+}
+
+p {
+  color:var(--gray);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+  margin-top:2rem;
+}
+
+.card {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:.3s;
+}
+
+.card:hover {
+  transform:translateY(-6px);
+}
+
+.card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card-content {
+  padding:1.2rem;
+}
+
+.card-content h3 {
+  margin-bottom:.5rem;
+}
+
+footer {
+  background:#020617;
+  color:#94a3b8;
+  text-align:center;
+  padding:1.5rem;
+  font-size:.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <img src="assets/images/profile.jpg" alt="Profile Image">
+  <h1>Parth Patel</h1>
+  <p>IT & Networking Professional | Hardware Technician</p>
+</header>
+
+<!-- MY STORY -->
+<section>
+  <h2>My Story</h2>
+  <p>
+    I am an IT and networking professional with formal education in
+    <strong>Computer Networking and Technical Support</strong> and hands-on
+    industry experience in network infrastructure, hardware maintenance,
+    and system configuration. I enjoy building reliable, secure systems
+    and continuously improving IT environments.
+  </p>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/seneca.jpg" alt="Seneca College">
+      <div class="card-content">
+        <h3>Seneca College</h3>
+        <p>
+          Computer Networking and Technical Support<br>
+          <strong>2021 – 2023</strong><br><br>
+          Networking fundamentals, TCP/IP, VLANs, hardware support,
+          troubleshooting, and network security basics.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section>
+  <h2>Work Experience</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/dhari.jpg" alt="Dhari Inc">
+      <div class="card-content">
+        <h3>Hardware Technician — Dhari Inc.</h3>
+        <p>
+          • Upgraded network hardware to <strong>Ubiquiti UDM Pro</strong><br>
+          • Created and managed <strong>VLANs</strong><br>
+          • Maintained network stability and security<br>
+          • Diagnosed and upgraded desktop & laptop hardware<br>
+          • Configured systems based on business requirements
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS / NETWORK WORK -->
+<section>
+  <h2>Network & Hardware Projects</h2>
+  <div class="grid">
+
+    <div class="card">
+      <img src="assets/images/udmpro.jpg" alt="UDM Pro">
+      <div class="card-content">
+        <h3>UDM Pro Network Upgrade</h3>
+        <p>
+          Migration to Ubiquiti Dream Machine Pro,
+          VLAN creation, network segmentation,
+          and performance optimization.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="assets/images/hardware.jpg" alt="Hardware Support">
+      <div class="card-content">
+        <h3>Hardware Diagnostics & Support</h3>
+        <p>
+          Desktop and laptop troubleshooting,
+          component upgrades, system configuration,
+          and preventive maintenance.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Parth Patel • Hosted on GitHub Pages
+</footer>
+
+</body>
+</html>

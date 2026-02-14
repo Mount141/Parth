@@ -3,254 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parth Patel | Professional Dashboard</title>
+<title>Bharat Travellers | Car Rental & Driver Services</title>
 
 <style>
-:root {
-  --primary:#2563eb;
-  --dark:#0f172a;
-  --gray:#64748b;
-  --bg:#f8fafc;
-}
-
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-
 body {
-  background:var(--bg);
-  color:var(--dark);
-  line-height:1.6;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
 
 header {
-  background:var(--dark);
-  color:white;
-  text-align:center;
-  padding:3rem 1rem;
+    background: #0d3b66;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-header img {
-  width:130px;
-  height:130px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid var(--primary);
-  margin-bottom:1rem;
+nav {
+    background: #003049;
+    text-align: center;
+    padding: 10px;
 }
 
-header h1 {
-  font-size:2.2rem;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
-header p {
-  color:#cbd5f5;
-  margin-top:.5rem;
+.hero {
+    background: url('https://images.unsplash.com/photo-1502877338535-766e1452684a') no-repeat center center/cover;
+    color: white;
+    padding: 120px 20px;
+    text-align: center;
 }
 
-section {
-  max-width:1150px;
-  margin:auto;
-  padding:3rem 1.5rem;
+.hero h1 {
+    font-size: 45px;
 }
 
-h2 {
-  font-size:1.8rem;
-  margin-bottom:1.5rem;
-  border-left:5px solid var(--primary);
-  padding-left:.75rem;
+.btn {
+    display: inline-block;
+    background: #f77f00;
+    color: white;
+    padding: 12px 25px;
+    margin-top: 15px;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-p {
-  color:var(--gray);
+.section {
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1.5rem;
-  margin-top:2rem;
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.card {
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:.3s;
-}
-
-.card:hover {
-  transform:translateY(-6px);
-}
-
-.card img {
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-content {
-  padding:1.2rem;
-}
-
-.card-content h3 {
-  margin-bottom:.5rem;
+.service-box {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 footer {
-  background:#020617;
-  color:#94a3b8;
-  text-align:center;
-  padding:1.5rem;
-  font-size:.9rem;
+    background: #0d3b66;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.site-footer p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+.contact-info {
+    font-size: 18px;
 }
 
-.site-footer i {
-  font-size: 20px;
-  color: #fff;
+@media(max-width: 768px){
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
 }
-
 </style>
 </head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 
 <body>
 
-<!-- HEADER -->
 <header>
-  <img src="images/profile.jpg" alt="Profile Image">
-  <h1>Parth Patel</h1>
-  <p>IT & Networking Professional | Hardware Technician</p>
+    <h2>Bharat Travellers</h2>
+    <p>Reliable Car Rental & Professional Driver Services</p>
 </header>
 
-<!-- MY STORY -->
-<section>
-  <h2>My Story</h2>
-  <p>
-    I am an IT and networking professional with formal education in
-    <strong>Computer Networking and Technical Support</strong> and hands-on
-    experience in network infrastructure, hardware support, and system configuration.
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+    <h1>Your Journey, Our Responsibility</h1>
+    <p>Safe, Affordable & Comfortable Travel Across India</p>
+    <a href="#contact" class="btn">Book Now</a>
+</section>
+
+<section id="about" class="section">
+    <h2>About Bharat Travellers</h2>
+    <p>
+        Bharat Travellers provides reliable car rental and professional driver services.
+        We focus on comfort, punctuality, and safety for all your travel needs.
+        Whether it's local city travel, airport transfer, or outstation trips,
+        we ensure a smooth journey.
     </p>
 </section>
 
-<!-- EDUCATION -->
-<section>
-  <h2>Education</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="images/seneca.jpg" alt="Seneca College">
-      <div class="card-content">
-        <h3>Seneca College</h3>
-        <p>
-          Computer Networking and Technical Support<br>
-          <strong>2021 – 2023</strong><br><br>
-          Networking fundamentals, TCP/IP, VLANs, routing,
-          hardware diagnostics, troubleshooting, and security basics.
-        </p>
-      </div>
+<section id="services" class="section" style="background:#f4f4f4;">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service-box">
+            <h3>🚗 Car Rental</h3>
+            <p>Clean, well-maintained vehicles for local and outstation travel at affordable prices.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>👨‍✈️ Driver Service</h3>
+            <p>Professional and experienced drivers available for your own car or company vehicle.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>✈️ Airport Transfers</h3>
+            <p>On-time pickup and drop services for airports with 24/7 availability.</p>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- WORK EXPERIENCE -->
-<section>
-  <h2>Work Experience</h2>
-  <div class="grid">
-
-    <!-- Dhari Inc -->
-    <div class="card">
-      <img src="images/dhari.jpg" alt="Dhari Inc">
-      <div class="card-content">
-        <h3>Hardware Technician — Dhari Inc.</h3>
-        <p>
-          <strong>April 2022 – May 2023 (Full-time)</strong><br><br>
-          • Network hardware upgrade to <strong>Ubiquiti UDM Pro</strong><br>
-          • VLAN creation and network segmentation<br>
-          • Network monitoring and performance optimization<br>
-          • Desktop & laptop hardware diagnostics, repairs, and upgrades<br>
-          • System configuration based on business and operational requirements
-        </p>
-      </div>
-    </div>
-
-    <!-- The Mount / Pharmatech -->
-    <div class="card">
-      <img src="images/themount.jpg" alt="The Mount Continuing Care Community">
-      <div class="card-content">
-        <h3>IT Administrator — The Mount Continuing Care Community Co.</h3>
-        <p>
-          <strong>December 2024 – Present</strong><br>
-          <em>Part of Pharmatech</em><br><br>
-          • Managing organizational hardware and ongoing IT support needs<br>
-          • Website management and updates based on business requirements<br>
-          • Designed and maintained an internal <strong>inventory management system</strong><br>
-          • Developed residential management workflows using <strong>Salesforce</strong>,
-            covering move-in to move-out processes<br>
-          • Managing network infrastructure including routers, switches, and access points<br>
-          • Updating and scaling network equipment as business needs evolve<br>
-          • Managing health & safety technology including motion sensors,
-            nurse call systems, and related equipment
-        </p>
-      </div>
-    </div>
-
-  </div>
+<section class="section">
+    <h2>Why Choose Us?</h2>
+    <p>✔ Experienced Drivers</p>
+    <p>✔ Affordable Pricing</p>
+    <p>✔ 24/7 Customer Support</p>
+    <p>✔ Safe & Comfortable Travel</p>
 </section>
 
-<!-- PROJECTS -->
-<section>
-  <h2>Network & Hardware Projects</h2>
-  <div class="grid">
-
-    <div class="card">
-      <img src="images/udmpro.jpg" alt="UDM Pro">
-      <div class="card-content">
-        <h3>UDM Pro Network Deployment</h3>
-        <p>
-          Full migration to UDM Pro including VLAN configuration,
-          firewall rules, and performance optimization.
-        </p>
-      </div>
+<section id="contact" class="section" style="background:#f4f4f4;">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+        <p>📞 Call: +91 9876543210</p>
+        <p>📧 Email: info@bharattravellers.com</p>
+        <p>📍 Location: India</p>
     </div>
-
-    <div class="card">
-      <img src="images/hardware.jpg" alt="Hardware Support">
-      <div class="card-content">
-        <h3>Hardware Diagnostics & Support</h3>
-        <p>
-          Troubleshooting, upgrading, and maintaining desktops
-          and laptops to ensure reliable performance.
-        </p>
-      </div>
-    </div>
-
-  </div>
+    <a href="https://wa.me/919876543210" class="btn">Chat on WhatsApp</a>
 </section>
-
-<!-- FOOTER -->
-  <footer class="site-footer">
-  <p>
-    © 2026 Tiny Tot Early Years Centres. All Rights Reserved.
-    <a href="https://www.facebook.com/profile.php?id=61587987655164" target="_blank" aria-label="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-  </p>
-</footer>
 
 <footer>
-  © 2026 Parth Patel
+    <p>© 2026 Bharat Travellers. All Rights Reserved.</p>
 </footer>
 
 </body>

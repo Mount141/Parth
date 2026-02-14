@@ -6,147 +6,57 @@
 <title>Bharat Travellers | Taxi Service in Ahmedabad</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background: #002b5c;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-nav {
-    background: #001f3f;
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.hero {
-    background: #0d3b66;
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.section {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.services {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    justify-content: center;
-}
-
-.slider {
-    display: flex;
-    animation: scroll 12s infinite linear;
-}
-
-.car-box {
-    min-width: 250px;
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #f4f4f4;
-}
-
-@keyframes scroll {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
-}
-
-.routes {
-    max-height: 300px;
-    overflow-y: scroll;
-    text-align: left;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-}
-
-footer {
-    background: #002b5c;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.btn {
-    background: #f77f00;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 10px;
-}
+body{margin:0;font-family:Arial,sans-serif;line-height:1.6;}
+header{background:#002b5c;color:white;padding:20px;text-align:center;}
+nav{background:#001f3f;padding:15px;text-align:center;}
+nav a{color:white;margin:0 18px;text-decoration:none;font-weight:bold;font-size:15px;}
+.hero{background:url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg')center/cover no-repeat;color:white;padding:120px 20px;text-align:center;}
+.hero h1{font-size:45px;margin:0;}
+.hero p{font-size:18px;}
+.hero .btn{background:#f77f00;color:white;padding:15px 25px;text-decoration:none;border-radius:5px;display:inline-block;margin-top:15px;font-weight:bold;}
+.section{padding:50px 20px;}
+h2{color:#002b5c;}
+.route-list{column-count:2;column-gap:30px;margin-top:20px; text-align:left;}
+footer{background:#001f3f;color:white;text-align:center;padding:20px;}
+@media(max-width:768px){.route-list{column-count:1;}}
 </style>
-</head>
 
+</head>
 <body>
 
 <header>
     <h1>Bharat Travellers</h1>
-    <p>Reliable Taxi Service in Ahmedabad</p>
+    <p>Best Taxi Service in Ahmedabad | Round Trip & One Way Taxi</p>
 </header>
 
 <nav>
-    <a href="#cars">Our Vehicles</a>
-    <a href="#roundtrip">Round Trip</a>
-    <a href="#oneway">One Way</a>
+    <a href="#services">Services</a>
+    <a href="#roundtrip">Round Trips</a>
+    <a href="#oneway">One Way Trips</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<section class="hero">
-    <h2>Safe & Affordable Taxi Service in Ahmedabad</h2>
-    <p>24/7 Available for Round Trip & One Way Taxi Services</p>
-    <a href="#contact" class="btn">Book Now</a>
-</section>
+<div class="hero">
+    <h1>Taxi Services from Ahmedabad</h1>
+    <p>Comfortable & Safe Travel On Time — 24/7 Available Taxi</p>
+    <a href="#contact" class="btn">Book Now on WhatsApp</a>
+</div>
 
-<section id="cars" class="section">
-    <h2>Our Taxi Vehicles</h2>
-    <div class="services">
-        <div class="slider">
-            <div class="car-box">
-                <h3>🚗 Sedan</h3>
-                <p>Comfortable for 4 passengers</p>
-            </div>
-
-            <div class="car-box">
-                <h3>🚙 Ertiga</h3>
-                <p>Perfect for family travel</p>
-            </div>
-
-            <div class="car-box">
-                <h3>🚘 Innova</h3>
-                <p>Spacious & Premium Travel</p>
-            </div>
-
-            <div class="car-box">
-                <h3>🚖 Innova Crysta</h3>
-                <p>Luxury & Comfortable Ride</p>
-            </div>
-        </div>
-    </div>
+<section id="services" class="section">
+    <h2>Our Services</h2>
+    <p>We offer professional taxi service from Ahmedabad to a wide range of cities across Gujarat, Rajasthan, MP & India. Our drivers are experienced and trained for safe travel.</p>
+    <ul>
+        <li>Round Trip Taxi Services</li>
+        <li>One Way Taxi Services</li>
+        <li>Airport Pick & Drop</li>
+        <li>Local City Taxi</li>
+        <li>Outstation Intercity Taxi</li>
+    </ul>
 </section>
 
 <section id="roundtrip" class="section">
-    <h2>Ahmedabad Round Trip Taxi Services</h2>
-    <div class="routes">
+    <h2>Ahmedabad Round Trip Taxi Routes</h2>
+    <div class="route-list">
 Ahmedabad To Morbi Round Trip Taxi<br>
 Ahmedabad To Rajkot Round Trip Taxi<br>
 Ahmedabad To Surat Round Trip Taxi<br>
@@ -157,50 +67,181 @@ Ahmedabad To Jamnagar Round Trip Taxi<br>
 Ahmedabad To Bhuj Round Trip Taxi<br>
 Ahmedabad To Palanpur Round Trip Taxi<br>
 Ahmedabad To Mount Abu Round Trip Taxi<br>
+Ahmedabad To Vapi Round Trip Taxi<br>
+Ahmedabad To Valsad Round Trip Taxi<br>
+Ahmedabad To Sarangpur Round Trip Taxi<br>
+Ahmedabad To Kandla Round Trip Taxi<br>
+Ahmedabad To Mundra Round Trip Taxi<br>
+Ahmedabad To Amreli Round Trip Taxi<br>
+Ahmedabad To Bharuch Round Trip Taxi<br>
+Ahmedabad To Ankleshwar Round Trip Taxi<br>
+Ahmedabad To Dahej Round Trip Taxi<br>
+Ahmedabad To Navsari Round Trip Taxi<br>
+Ahmedabad To Sanand Round Trip Taxi<br>
+Ahmedabad To Palitana Round Trip Taxi<br>
+Ahmedabad To Alang Round Trip Taxi<br>
+Ahmedabad To Saputara Round Trip Taxi<br>
+Ahmedabad To Shankeshwar Round Trip Taxi<br>
+Ahmedabad To Deesa Round Trip Taxi<br>
+Ahmedabad To Tharad Round Trip Taxi<br>
+Ahmedabad To Dhanera Round Trip Taxi<br>
+Ahmedabad To Radhanpur Round Trip Taxi<br>
+Ahmedabad To Suigam Round Trip Taxi<br>
+Ahmedabad To Patan Round Trip Taxi<br>
+Ahmedabad To Modhera Round Trip Taxi<br>
+Ahmedabad To Siddhpur Round Trip Taxi<br>
+Ahmedabad To Halvad Round Trip Taxi<br>
+Ahmedabad To Dhrangadhra Round Trip Taxi<br>
 Ahmedabad To Dwarka Round Trip Taxi<br>
+Ahmedabad To Viramgam Round Trip Taxi<br>
 Ahmedabad To Somnath Round Trip Taxi<br>
+Ahmedabad To Mandvi Round Trip Taxi<br>
+Ahmedabad To Porbandar Round Trip Taxi<br>
+Ahmedabad To Bhachau Round Trip Taxi<br>
+Ahmedabad To Samakhiali Round Trip Taxi<br>
+Ahmedabad To Wakaner Round Trip Taxi<br>
 Ahmedabad To Diu Round Trip Taxi<br>
+Ahmedabad To Chotila Round Trip Taxi<br>
+Ahmedabad To Surendranagar Round Trip Taxi<br>
+Ahmedabad To Limbdi Round Trip Taxi<br>
+Ahmedabad To Sayla Round Trip Taxi<br>
+Ahmedabad To Sasangir Round Trip Taxi<br>
+Ahmedabad To Gondal Round Trip Taxi<br>
+Ahmedabad To Kheda Round Trip Taxi<br>
+Ahmedabad To Nadiad Round Trip Taxi<br>
+Ahmedabad To Anand Round Trip Taxi<br>
+Ahmedabad To Khambhat Round Trip Taxi<br>
+Ahmedabad To Dhoraji Round Trip Taxi<br>
+Ahmedabad To Dholera Round Trip Taxi<br>
 Ahmedabad To Junagadh Round Trip Taxi<br>
-Ahmedabad To Statue of Unity Round Trip Taxi<br>
-Ahmedabad To Jaipur Round Trip Taxi<br>
-Ahmedabad To Udaipur Round Trip Taxi<br>
+Ahmedabad To Talaja Round Trip Taxi<br>
+Ahmedabad To Bagodara Round Trip Taxi<br>
+Ahmedabad To Rajula Round Trip Taxi<br>
 Ahmedabad To Indore Round Trip Taxi<br>
-Ahmedabad To Shirdi Round Trip Taxi<br>
-Dwarka To Somnath Round Trip Taxi<br>
-Somnath To Dwarka Round Trip Taxi<br>
+Ahmedabad To Mahuva Round Trip Taxi<br>
+Ahmedabad To Godhra Round Trip Taxi<br>
+Ahmedabad To Una Round Trip Taxi<br>
+Ahmedabad To Kodinar Round Trip Taxi<br>
+Ahmedabad To Dahod Round Trip Taxi<br>
+Ahmedabad To Keshod Round Trip Taxi<br>
+Ahmedabad To Balasinor Round Trip Taxi<br>
+Ahmedabad To Nalsarovar Round Trip Taxi<br>
+Ahmedabad To Vitthalapur Round Trip Taxi<br>
+Ahmedabad To Bechraji Round Trip Taxi<br>
+Ahmedabad To Modasa Round Trip Taxi<br>
+Ahmedabad To Harij Round Trip Taxi<br>
+Ahmedabad To Shamlaji Round Trip Taxi<br>
+Ahmedabad To Kheralu Round Trip Taxi<br>
+Ahmedabad To Himmatnagar Round Trip Taxi<br>
+Ahmedabad To Khedbrahma Round Trip Taxi<br>
+Ahmedabad To Ambaji Round Trip Taxi<br>
+Ahmedabad To Visnagar Round Trip Taxi<br>
+Ahmedabad To Gandhinagar Round Trip Taxi<br>
+Ahmedabad To Chhota Udepur Round Trip Taxi<br>
+Ahmedabad To Jambusar Round Trip Taxi<br>
+Ahmedabad To Karjan Round Trip Taxi<br>
+Ahmedabad To Poicha Round Trip Taxi<br>
+Ahmedabad To Daman Round Trip Taxi<br>
+Ahmedabad To Dabhoi Round Trip Taxi<br>
+Ahmedabad To Bardoli Round Trip Taxi<br>
+Ahmedabad To Halol Round Trip Taxi<br>
+Ahmedabad To Rajpipla Round Trip Taxi<br>
+Ahmedabad To Statue of Unity Round Trip Taxi<br>
+Ahmedabad To Dakor Round Trip Taxi<br>
+Ahmedabad To Unjha Round Trip Taxi<br>
+Ahmedabad To Mahudi Round Trip Taxi<br>
+Ahmedabad To Vijapur Round Trip Taxi<br>
+Ahmedabad To Idar Round Trip Taxi<br>
+Ahmedabad To Jaisalmer Round Trip Taxi<br>
+Ahmedabad To Barmer Round Trip Taxi<br>
+Ahmedabad To Balotra Round Trip Taxi<br>
+Ahmedabad To Nathdwara Round Trip Taxi<br>
+Ahmedabad To Jaipur Round Trip Taxi<br>
+Ahmedabad To Ajmer Round Trip Taxi<br>
+Ahmedabad To Pali Round Trip Taxi<br>
+Ahmedabad To Jalore Round Trip Taxi<br>
+Ahmedabad To Dungarpur Round Trip Taxi<br>
+Ahmedabad To Banswara Round Trip Taxi<br>
+Ahmedabad To Chittorgarh Round Trip Taxi<br>
+Ahmedabad To Sanchore Round Trip Taxi<br>
+Ahmedabad To Bhinmal Round Trip Taxi<br>
+Ahmedabad To Bhilwara Round Trip Taxi<br>
+Ahmedabad To Beawar Round Trip Taxi<br>
+Ahmedabad To Sirohi Round Trip Taxi<br>
+Ahmedabad To Ujjain Round Trip Taxi
     </div>
 </section>
 
 <section id="oneway" class="section">
-    <h2>One Way Taxi Services</h2>
-    <div class="routes">
+    <h2>Ahmedabad One Way Taxi Routes</h2>
+    <div class="route-list">
 Ahmedabad To Mumbai One Way Taxi<br>
 Ahmedabad To Rajkot One Way Taxi<br>
 Ahmedabad To Surat One Way Taxi<br>
 Ahmedabad To Bhavnagar One Way Taxi<br>
 Ahmedabad To Vadodara One Way Taxi<br>
+Ahmedabad To Udaipur One Way Taxi<br>
 Ahmedabad To Jamnagar One Way Taxi<br>
+Ahmedabad To Jaipur One Way Taxi<br>
+Ahmedabad To Jodhpur One Way Taxi<br>
+Ahmedabad To Bhinmal One Way Taxi<br>
+Ahmedabad To Morbi One Way Taxi<br>
+Ahmedabad To Gandhidham One Way Taxi<br>
 Ahmedabad To Bhuj One Way Taxi<br>
-Ahmedabad To Dwarka One Way Taxi<br>
+Ahmedabad To Halvad One Way Taxi<br>
+Ahmedabad To Kandla One Way Taxi<br>
+Ahmedabad To Mandvi One Way Taxi<br>
+Ahmedabad To Samakhiali One Way Taxi<br>
+Ahmedabad To Palanpur One Way Taxi<br>
+Ahmedabad To Patan One Way Taxi<br>
+Ahmedabad To Radhanpur One Way Taxi<br>
+Ahmedabad To Deesa One Way Taxi<br>
+Ahmedabad To Himmatnagar One Way Taxi<br>
+Ahmedabad To Modasa One Way Taxi<br>
+Ahmedabad To Ankleshwar One Way Taxi<br>
+Ahmedabad To Bharuch One Way Taxi<br>
+Ahmedabad To Karjan One Way Taxi<br>
 Ahmedabad To Somnath One Way Taxi<br>
+Ahmedabad To Dwarka One Way Taxi<br>
+Ahmedabad To Porbandar One Way Taxi<br>
 Ahmedabad To Diu One Way Taxi<br>
+Ahmedabad To Valsad One Way Taxi<br>
+Ahmedabad To Surendranagar One Way Taxi<br>
+Ahmedabad To Nadiad One Way Taxi<br>
+Ahmedabad To Anand One Way Taxi<br>
+Ahmedabad To Godhra One Way Taxi<br>
 Ahmedabad To Vapi One Way Taxi<br>
 Ahmedabad To Navsari One Way Taxi<br>
-Ahmedabad To Ujjain One Way Taxi<br>
-Ahmedabad To Indore One Way Taxi<br>
-Ahmedabad To Shirdi One Way Taxi<br>
-Rajkot To Ahmedabad One Way Taxi<br>
-Bhuj To Ahmedabad One Way Taxi<br>
-Bharuch To Ahmedabad One Way Taxi<br>
+Ahmedabad To Dahod One Way Taxi<br>
+Ahmedabad To Khedbrahma One Way Taxi<br>
+Ahmedabad To Jetpur One Way Taxi<br>
+Ahmedabad To Amreli One Way Taxi<br>
+Ahmedabad To Mehsana One Way Taxi<br>
+Ahmedabad To Alang One Way Taxi<br>
+Ahmedabad To Ambaji One Way Taxi<br>
+Ahmedabad To Bardoli One Way Taxi<br>
+Ahmedabad To Bhachau One Way Taxi<br>
+Ahmedabad To Bilimora One Way Taxi<br>
+Ahmedabad To Chanasma One Way Taxi<br>
+Ahmedabad To Dholka One Way Taxi<br>
+Ahmedabad To Dhandhuka One Way Taxi<br>
+Ahmedabad To Gandhinagar One Way Taxi<br>
+Ahmedabad To Kalol One Way Taxi<br>
+Ahmedabad To Kadi One Way Taxi<br>
+Ahmedabad To Kapadvanj One Way Taxi<br>
+Ahmedabad To Wakaner One Way Taxi<br>
+Ahmedabad To Visnagar One Way Taxi<br>
+Ahmedabad To Viramgam One Way Taxi<br>
+Ahmedabad To Vijapur One Way Taxi<br>
     </div>
 </section>
 
 <section id="contact" class="section">
-    <h2>Contact Bharat Travellers</h2>
+    <h2>Contact Bharat Travellers – Ahmedabad</h2>
     <p>📍 Ahmedabad, Gujarat</p>
-    <p>📞 Call: +91 9876543210</p>
+    <p>📞 Call / WhatsApp: +91 9876543210</p>
     <p>📧 Email: info@bharattravellers.com</p>
-    <a href="https://wa.me/919876543210" class="btn">WhatsApp Now</a>
+    <a href="https://wa.me/919876543210" class="btn">Chat on WhatsApp</a>
 </section>
 
 <footer>

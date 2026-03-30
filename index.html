@@ -2,239 +2,225 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kids Learning Centre</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Early Childhood Connect</title>
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
-    }
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: white;
-      position: sticky;
-      top: 0;
-    }
-
-    nav h1 {
-      color: #6d28d9;
-      font-weight: 700;
-    }
-
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #374151;
-      font-weight: 500;
-    }
-
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #7c3aed, #a78bfa);
-      color: white;
-    }
-
-    .hero h2 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .hero button {
-      padding: 14px 30px;
-      background: white;
-      color: #6d28d9;
-      border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .hero button:hover {
-      background: #ede9fe;
-    }
-
-    /* Features */
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 70px 20px;
-    }
-
-    .feature-box {
-      width: 280px;
-      padding: 25px;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .feature-box:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-box h3 {
-      color: #6d28d9;
-    }
-
-    /* Programs */
-    .programs {
-      background: #f3f4f6;
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    .programs h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
-
-    .program-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-    }
-
-    .program-card {
-      width: 280px;
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .program-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .program-card h3 {
-      color: #6d28d9;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      padding: 90px 20px;
-      background: linear-gradient(135deg, #6d28d9, #9333ea);
-      color: white;
-    }
-
-    .cta button {
-      padding: 14px 30px;
-      background: white;
-      color: #6d28d9;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Footer */
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- Navbar -->
+<!-- Navbar -->
+<header class="navbar">
+  <h1 class="logo">EarlyConnect</h1>
   <nav>
-    <h1>Kids Learning Centre</h1>
-    <div>
-      <a href="#">Home</a>
-      <a href="#">Programs</a>
-      <a href="#">Contact</a>
-    </div>
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Smart Daycare Platform</h2>
-    <p>Connecting parents, teachers, and children seamlessly</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h2>Connecting Parents & Educators</h2>
+    <p>Real-time updates, progress tracking & seamless communication.</p>
     <button>Get Started</button>
-  </section>
+  </div>
+</section>
 
-  <!-- Features -->
-  <section class="features">
-    <div class="feature-box">
-      <h3>Parent Updates</h3>
-      <p>Daily reports, photos & communication</p>
+<!-- Features -->
+<section class="features">
+  <h2>Features</h2>
+
+  <div class="feature-grid">
+
+    <div class="card">
+      <i class="fas fa-baby icon"></i>
+      <h3>Child Updates</h3>
+      <p>Track daily activities, meals, and learning moments.</p>
     </div>
 
-    <div class="feature-box">
-      <h3>Attendance</h3>
-      <p>Easy check-in & tracking system</p>
+    <div class="card">
+      <i class="fas fa-chart-line icon"></i>
+      <h3>Progress Tracking</h3>
+      <p>Monitor development milestones and achievements.</p>
     </div>
 
-    <div class="feature-box">
-      <h3>Billing</h3>
-      <p>Automated invoices and payments</p>
+    <div class="card">
+      <i class="fas fa-comments icon"></i>
+      <h3>Messaging</h3>
+      <p>Communicate instantly between parents and teachers.</p>
     </div>
-  </section>
 
-  <!-- Programs -->
-  <section class="programs">
-    <h2>Our Programs</h2>
+  </div>
+</section>
 
-    <div class="program-list">
-      <div class="program-card">
-        <h3>Infants</h3>
-        <p>Safe and nurturing environment</p>
-      </div>
+<!-- About -->
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    We provide a modern platform for childcare centers to stay connected
+    with families through real-time communication and insights.
+  </p>
+</section>
 
-      <div class="program-card">
-        <h3>Toddlers</h3>
-        <p>Interactive and fun learning</p>
-      </div>
+<!-- Contact -->
+<section class="contact">
+  <h2>Contact Us</h2>
 
-      <div class="program-card">
-        <h3>Preschool</h3>
-        <p>School readiness programs</p>
-      </div>
-    </div>
-  </section>
+  <input type="text" placeholder="Your Name">
+  <input type="email" placeholder="Your Email">
+  <textarea placeholder="Your Message"></textarea>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Enroll Your Child Today</h2>
-    <p>Join our trusted daycare community</p>
-    <button>Enroll Now</button>
-  </section>
+  <button>Send Message</button>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>Kids Learning Centre</p>
-    <p>Email: info@kidslearning.com</p>
-    <p>Phone: +1 902-000-0000</p>
-  </footer>
+<footer>
+  <p>© 2026 EarlyConnect</p>
+</footer>
 
 </body>
 </html>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f8fafc;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.logo {
+  color: #6c63ff;
+}
+
+/* Hero */
+.hero {
+  height: 90vh;
+  background: linear-gradient(135deg, #6c63ff, #4facfe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.hero button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: white;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Features */
+.features {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  width: 260px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.icon {
+  font-size: 30px;
+  color: #6c63ff;
+  margin-bottom: 15px;
+}
+
+/* About */
+.about {
+  padding: 80px 40px;
+  background: #eef2ff;
+  text-align: center;
+}
+
+/* Contact */
+.contact {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.contact input,
+.contact textarea {
+  display: block;
+  margin: 10px auto;
+  width: 320px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.contact button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  background: #111827;
+  color: white;
+  text-align: center;
+}

@@ -54,6 +54,67 @@ body {
   opacity: 0.2;
 }
 
+  .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  gap: 40px;
+  background: linear-gradient(to right, #f5f7fb, #eef1f7);
+  flex-wrap: wrap;
+}
+
+/* LEFT TEXT */
+.hero-text {
+  flex: 1;
+  max-width: 550px;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+  color: #6366f1; /* purple highlight text */
+}
+
+.hero-text p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* BADGES */
+.hero-badges {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  background: #eee;
+}
+
+.badge.yellow {
+  background: #fde68a;
+}
+
+.badge.purple {
+  background: #ddd6fe;
+}
+
+/* RIGHT IMAGE */
+.hero-image img {
+  width: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+}
 /* ICON BOX */
 .program-card .icon {
   width: 60px;
@@ -295,13 +356,40 @@ footer {
 </section>
 
 <!-- ABOUT -->
-<section class="about">
+  <section class="hero">
+  <div class="hero-text">
+    <h1>
+      Welcome To Tiny Tot <br>
+      <span>All Kids Learning Centre</span>
+    </h1>
+
+    <p>
+      Promote your child's self-esteem and education with the help of All Kids Learning Centre.
+      Our programs are inclusive for all children from infants to pre-kindergarten.
+    </p>
+
+    <p>
+      With a strong focus on parent and educator communication, we encourage your involvement
+      in activities, meetings, and building a supportive learning community.
+    </p>
+
+    <div class="hero-badges">
+      <div class="badge yellow">Qualified Educators</div>
+      <div class="badge purple">Inclusive Programs</div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/classroom.jpg" alt="Kids playing">
+  </div>
+</section>
+#<section class="about">
   <h2>About All Kids Learning Centre</h2>
   <p>
     We provide a warm, caring and stimulating environment where children learn through play,
     creativity, and exploration. Our goal is to build confidence, independence, and a lifelong love of learning.
   </p>
-</section>
+#</section>
 
 <section class="programs">
   <div class="program-card pink">

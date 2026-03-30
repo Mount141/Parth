@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All Kids Learning Centre</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
@@ -18,257 +17,240 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #fdfbff, #f0f4ff);
+  background: #f0f4ff;
 }
 
-/* Navbar */
-.navbar {
+/* HEADER */
+header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 20px 50px;
   background: white;
-  border-radius: 0 0 20px 20px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
 .logo {
-  color: #6c63ff;
+  font-size: 22px;
   font-weight: 700;
+  color: #ff6b6b;
 }
 
-.navbar a {
-  margin-left: 20px;
+nav a {
+  margin-left: 25px;
   text-decoration: none;
   color: #555;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #ff6b6b;
 }
 
 /* HERO */
 .hero {
-  height: 90vh;
-  background: linear-gradient(135deg, #6c63ff, #4facfe, #00f2fe);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+  padding: 80px 20px;
   text-align: center;
-  color: white;
-  border-radius: 0 0 40px 40px;
+  color: #333;
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .hero p {
-  margin-top: 15px;
-  font-size: 18px;
+  margin-top: 10px;
 }
 
-.hero button {
+.hero img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 20px;
   margin-top: 25px;
-  padding: 14px 30px;
-  border-radius: 30px;
-  border: none;
-  background: white;
-  color: #333;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* FEATURES */
-.features {
-  padding: 80px 40px;
+/* SECTIONS */
+section {
+  padding: 70px 40px;
   text-align: center;
 }
 
-.feature-grid {
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.grid {
   display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
   flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .card {
-  background: linear-gradient(145deg, #ffffff, #f3f6ff);
-  padding: 30px;
-  width: 260px;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .icon {
-  font-size: 35px;
-  margin-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-/* colorful icons */
-.icon1 { color: #ff7b54; }
-.icon2 { color: #4facfe; }
-.icon3 { color: #00c9a7; }
+/* COLORS */
+.icon.blue { color: #4facfe; }
+.icon.green { color: #43e97b; }
+.icon.orange { color: #f7971e; }
 
-/* PROGRAMS */
-.programs {
-  padding: 80px 40px;
-  text-align: center;
-  background: linear-gradient(to right, #eef2ff, #f9fbff);
-  border-radius: 40px;
-  margin: 40px;
-}
-
-.program-box {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
-/* CTA */
-.cta {
-  margin: 60px;
-  padding: 50px;
-  text-align: center;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  border-radius: 30px;
-  color: white;
-}
-
-.cta button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 25px;
-  background: white;
-  color: #333;
-}
-
-/* CONTACT */
-.contact {
-  padding: 80px 40px;
-  text-align: center;
-}
-
-.contact input,
-.contact textarea {
-  display: block;
-  margin: 10px auto;
-  width: 320px;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-.contact button {
-  margin-top: 15px;
-  padding: 12px 25px;
-  border-radius: 25px;
-  border: none;
-  background: #6c63ff;
-  color: white;
+/* ABOUT */
+.about {
+  background: #ffffff;
 }
 
 /* FOOTER */
 footer {
-  padding: 20px;
-  background: #111827;
+  background: #1f2937;
   color: white;
+  padding: 20px;
   text-align: center;
 }
-
 </style>
 </head>
 
 <body>
 
-<header class="navbar">
-  <h2 class="logo">All Kids Learning Centre</h2>
+<!-- HEADER -->
+<header>
+  <div class="logo">All Kids Learning Centre</div>
   <nav>
     <a href="#">Home</a>
+    <a href="#">About Us</a>
     <a href="#">Programs</a>
+    <a href="#">Services</a>
     <a href="#">Contact</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div>
-    <h1>Fun • Safe • Learning</h1>
-    <p>Where every child grows, learns, and shines 🌟</p>
-    <button>Enroll Now</button>
-  </div>
+  <h1>Bright Futures Start Here 🌈</h1>
+  <p>Safe, Fun & Educational Childcare Environment</p>
+
+  <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200">
 </section>
 
-<section class="features">
-  <h2>Why Parents Love Us</h2>
-
-  <div class="feature-grid">
-
-    <div class="card">
-      <i class="fas fa-baby icon icon1"></i>
-      <h3>Safe Care</h3>
-      <p>Loving and secure environment for children.</p>
-    </div>
-
-    <div class="card">
-      <i class="fas fa-book-open icon icon2"></i>
-      <h3>Learning</h3>
-      <p>Interactive and fun early education programs.</p>
-    </div>
-
-    <div class="card">
-      <i class="fas fa-apple-alt icon icon3"></i>
-      <h3>Healthy Food</h3>
-      <p>Fresh and nutritious meals every day.</p>
-    </div>
-
-  </div>
+<!-- ABOUT -->
+<section class="about">
+  <h2>About All Kids Learning Centre</h2>
+  <p>
+    We provide a warm, caring and stimulating environment where children learn through play,
+    creativity, and exploration. Our goal is to build confidence, independence, and a lifelong love of learning.
+  </p>
 </section>
 
-<section class="programs">
+<!-- PROGRAMS -->
+<section>
   <h2>Our Programs</h2>
 
-  <div class="program-box">
+  <div class="grid">
 
     <div class="card">
-      <i class="fas fa-baby-carriage icon icon1"></i>
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800">
       <h3>Infant Care</h3>
-      <p>0-2 years nurturing support</p>
+      <p>Safe, nurturing care for infants.</p>
     </div>
 
     <div class="card">
-      <i class="fas fa-puzzle-piece icon icon2"></i>
-      <h3>Toddler</h3>
-      <p>Play-based learning activities</p>
+      <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800">
+      <h3>Toddler Program</h3>
+      <p>Interactive learning through play.</p>
     </div>
 
     <div class="card">
-      <i class="fas fa-school icon icon3"></i>
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800">
       <h3>Preschool</h3>
-      <p>School readiness program</p>
+      <p>Preparing children for school success.</p>
     </div>
 
   </div>
 </section>
 
-<section class="cta">
-  <h2>Give Your Child the Best Start 🚀</h2>
-  <p>Enroll today and watch them grow!</p>
-  <button>Register Now</button>
+<!-- SERVICES -->
+<section>
+  <h2>Our Services</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <i class="fas fa-tree icon green"></i>
+      <h3>Outdoor Activities</h3>
+      <p>Daily outdoor play and exploration.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-user-check icon blue"></i>
+      <h3>Certified Staff</h3>
+      <p>Highly trained and certified educators.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-apple-alt icon orange"></i>
+      <h3>Nutrition Program</h3>
+      <p>Healthy meals and snacks every day.</p>
+    </div>
+
+  </div>
 </section>
 
-<section class="contact">
+<!-- COMMUNITY -->
+<section>
+  <h2>Community & Activities</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800">
+      <h3>Healthy Eating</h3>
+      <p>Teaching kids good food habits.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800">
+      <h3>Community Events</h3>
+      <p>Family and community engagement programs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
   <h2>Contact Us</h2>
 
-  <input type="text" placeholder="Your Name">
-  <input type="email" placeholder="Your Email">
-  <textarea placeholder="Message"></textarea>
+  <input type="text" placeholder="Your Name"><br><br>
+  <input type="email" placeholder="Your Email"><br><br>
+  <textarea placeholder="Message"></textarea><br><br>
 
-  <button>Send Message</button>
+  <button style="padding:10px 20px;background:#ff6b6b;color:white;border:none;border-radius:10px;">
+    Send Message
+  </button>
 </section>
 
 <footer>

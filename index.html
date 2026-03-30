@@ -16,6 +16,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth; /* smooth scrolling for links */
+}
+
 body {
   background: #f0f4ff;
 }
@@ -27,6 +31,9 @@ header {
   padding: 20px 50px;
   background: white;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
@@ -121,15 +128,14 @@ nav a:hover {
 .badge.yellow { background: #fde68a; }
 .badge.purple { background: #ddd6fe; }
 
-
-
 .welcome-hero .hero-image img {
-  width: 100%;        /* fill the container */
-  max-width: 400px;   /* don’t stretch beyond this */
-  height: auto;       /* maintain aspect ratio */
+  width: 100%;        
+  max-width: 400px;  
+  height: auto;      
   border-radius: 20px;
-  object-fit: cover;  /* crop without distortion */
+  object-fit: cover; 
 }
+
 /* PROGRAMS */
 .programs {
   display: flex;
@@ -256,23 +262,23 @@ footer {
 <header>
   <div class="logo">All Kids Learning Centre</div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Programs</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#welcome">About Us</a>
+    <a href="#programs">Programs</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section id="home" class="hero">
   <h1>Bright Futures Start Here </h1>
   <p>Safe, Fun & Educational Childcare Environment</p>
   <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Kids learning">
 </section>
 
-<!-- WELCOME HERO (NEW BACKGROUND) -->
-<section class="welcome-hero">
+<!-- WELCOME HERO -->
+<section id="welcome" class="welcome-hero">
   <div class="hero-text">
     <h1>
       Welcome To Tiny Tot <br>
@@ -301,7 +307,7 @@ footer {
 </section>
 
 <!-- PROGRAMS -->
-<section class="programs">
+<section id="programs" class="programs">
   <div class="program-card pink">
     <div class="icon"><i class="fas fa-baby"></i></div>
     <h3>Infants</h3>
@@ -332,22 +338,19 @@ footer {
 </section>
 
 <!-- SERVICES -->
-<section>
+<section id="services">
   <h2>Our Services</h2>
-
   <div class="grid">
     <div class="card">
       <i class="fas fa-tree icon green"></i>
       <h3>Outdoor Activities</h3>
       <p>Daily outdoor play and exploration.</p>
     </div>
-
     <div class="card">
       <i class="fas fa-user-check icon blue"></i>
       <h3>Certified Staff</h3>
       <p>Highly trained and certified educators.</p>
     </div>
-
     <div class="card">
       <i class="fas fa-apple-alt icon orange"></i>
       <h3>Nutrition Program</h3>
@@ -357,16 +360,14 @@ footer {
 </section>
 
 <!-- COMMUNITY -->
-<section>
+<section id="community">
   <h2>Community & Activities</h2>
-
   <div class="grid">
     <div class="card">
       <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800">
       <h3>Healthy Eating</h3>
       <p>Teaching kids good food habits.</p>
     </div>
-
     <div class="card">
       <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800">
       <h3>Community Events</h3>
@@ -376,13 +377,11 @@ footer {
 </section>
 
 <!-- CONTACT -->
-<section>
+<section id="contact">
   <h2>Contact Us</h2>
-
   <input type="text" placeholder="Your Name"><br><br>
   <input type="email" placeholder="Your Email"><br><br>
   <textarea placeholder="Message"></textarea><br><br>
-
   <button style="padding:10px 20px;background:#ff6b6b;color:white;border:none;border-radius:10px;">
     Send Message
   </button>
@@ -391,6 +390,9 @@ footer {
 <footer>
   <p>© 2026 All Kids Learning Centre</p>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>

@@ -20,205 +20,6 @@ body {
   background: #f0f4ff;
 }
 
-  /* TEXT STYLE */
-.program-card h3 {
-    /* Remove this */
-  color: #111; /* dark text color */
-  display: block; /* or inline-block if you want */
-  margin-bottom: 8px;
-}
-
-.program-card span {
-  /* background: #3b82f6; */  /* Remove this */
-  color: #555; /* subtle text color */
-  display: block; /* for spacing */
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-.program-card p {
-  /* background: #3b82f6; */  /* Remove this */
-  color: #333; /* paragraph text color */
-  padding: 0; /* remove extra padding */
-  margin: 0;
-}
-/* TOP RIGHT SHAPE */
-.program-card::after {
-  content: '';
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  top: -40px;
-  right: -40px;
-  border-radius: 50%;
-  opacity: 0.2;
-}
-
-  .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px;
-  gap: 40px;
-  background: linear-gradient(to right, #f5f7fb, #eef1f7);
-  flex-wrap: wrap;
-}
-
-/* LEFT TEXT */
-.hero-text {
-  flex: 1;
-  max-width: 550px;
-}
-
-.hero-text h1 {
-  font-size: 42px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.hero-text h1 span {
-  color: #6366f1; /* purple highlight text */
-}
-
-.hero-text p {
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-/* BADGES */
-.hero-badges {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.badge {
-  padding: 10px 18px;
-  border-radius: 25px;
-  font-size: 14px;
-  background: #eee;
-}
-
-.badge.yellow {
-  background: #fde68a;
-}
-
-.badge.purple {
-  background: #ddd6fe;
-}
-
-/* RIGHT IMAGE */
-.hero-image img {
-  width: 500px;
-  border-radius: 20px;
-  object-fit: cover;
-}
-/* ICON BOX */
-.program-card .icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 26px;
-  margin-bottom: 15px;
-}
-
-/* TEXT STYLE */
-.programs {
-  display: flex;
-  gap: 30px;
-  padding: 60px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.program-card {
-  width: 260px;
-  padding: 25px;
-  border-radius: 20px;
-  background: #ffffff; /* white background */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* subtle shadow */
-  text-align: left;
-  position: relative;
-}
-
-/* Top-right colored shape */
-.program-card::after {
-  content: '';
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  top: -40px;
-  right: -40px;
-  border-radius: 50%;
-  opacity: 0.1;
-}
-
-/* Icon box */
-.program-card .icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 26px;
-  margin-bottom: 15px;
-}
-
-/* Text styling (no highlight) */
-.program-card h3 {
-  color: #111;
-  margin-bottom: 5px;
-  font-size: 18px;
-}
-
-.program-card span {
-  color: #6c63ff; /* subtle blue/purple like your screenshot */
-  font-size: 14px;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.program-card p {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Icon & top-right shape colors */
-.pink .icon { background: #ff6b6b; }
-.pink::after { background: #ff6b6b; }
-
-.yellow .icon { background: #facc15; }
-.yellow::after { background: #facc15; }
-
-.purple .icon { background: #a78bfa; }
-.purple::after { background: #a78bfa; }
-
-.green .icon { background: #34d399; }
-.green::after { background: #34d399; }
-
-/* COLORS */
-.pink .icon { background: #ff6b6b; }
-.pink::after { background: #ff6b6b; }
-
-.yellow .icon { background: #facc15; }
-.yellow::after { background: #facc15; }
-
-.purple .icon { background: #a78bfa; }
-.purple::after { background: #a78bfa; }
-
-.green .icon { background: #34d399; }
-.green::after { background: #34d399; }
-
 /* HEADER */
 header {
   display: flex;
@@ -269,18 +70,139 @@ nav a:hover {
   margin-top: 25px;
 }
 
-/* SECTIONS */
-section {
-  padding: 70px 40px;
+/* WELCOME HERO - DIFFERENT BACKGROUND */
+.welcome-hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background: #dff6ff; /* new background color */
+  padding: 60px 20px;
   text-align: center;
 }
 
-h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.welcome-hero .hero-text {
+  max-width: 600px;
 }
 
-/* GRID */
+.welcome-hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.welcome-hero h1 span {
+  color: #1e40af; /* darker blue for contrast */
+}
+
+.welcome-hero p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  background: #eee;
+}
+
+.badge.yellow { background: #fde68a; }
+.badge.purple { background: #ddd6fe; }
+
+.welcome-hero .hero-image img {
+  width: 400px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* PROGRAMS */
+.programs {
+  display: flex;
+  gap: 30px;
+  padding: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.program-card {
+  width: 260px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: left;
+  position: relative;
+}
+
+.program-card::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -40px;
+  right: -40px;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.program-card .icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.program-card h3 {
+  color: #111;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.program-card span {
+  color: #6c63ff;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.program-card p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ICON COLORS */
+.pink .icon { background: #ff6b6b; }
+.pink::after { background: #ff6b6b; }
+
+.yellow .icon { background: #facc15; }
+.yellow::after { background: #facc15; }
+
+.purple .icon { background: #a78bfa; }
+.purple::after { background: #a78bfa; }
+
+.green .icon { background: #34d399; }
+.green::after { background: #34d399; }
+
+/* SERVICES & CARDS */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -298,9 +220,7 @@ h2 {
   transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-}
+.card:hover { transform: translateY(-8px); }
 
 .card img {
   width: 100%;
@@ -313,15 +233,9 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* COLORS */
 .icon.blue { color: #4facfe; }
 .icon.green { color: #43e97b; }
 .icon.orange { color: #f7971e; }
-
-/* ABOUT */
-.about {
-  background: #ffffff;
-}
 
 /* FOOTER */
 footer {
@@ -351,12 +265,11 @@ footer {
 <section class="hero">
   <h1>Bright Futures Start Here </h1>
   <p>Safe, Fun & Educational Childcare Environment</p>
-
-  <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200">
+  <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Kids learning">
 </section>
 
-<!-- ABOUT -->
-  <section class="hero">
+<!-- WELCOME HERO (NEW BACKGROUND) -->
+<section class="welcome-hero">
   <div class="hero-text">
     <h1>
       Welcome To Tiny Tot <br>
@@ -383,14 +296,8 @@ footer {
     <img src="images/classroom.jpg" alt="Kids playing">
   </div>
 </section>
-#<section class="about">
-  <h2>About All Kids Learning Centre</h2>
-  <p>
-    We provide a warm, caring and stimulating environment where children learn through play,
-    creativity, and exploration. Our goal is to build confidence, independence, and a lifelong love of learning.
-  </p>
-#</section>
 
+<!-- PROGRAMS -->
 <section class="programs">
   <div class="program-card pink">
     <div class="icon"><i class="fas fa-baby"></i></div>
@@ -420,13 +327,12 @@ footer {
     <p>Preparing for school success with structured learning and social skills.</p>
   </div>
 </section>
-  
+
 <!-- SERVICES -->
 <section>
   <h2>Our Services</h2>
 
   <div class="grid">
-
     <div class="card">
       <i class="fas fa-tree icon green"></i>
       <h3>Outdoor Activities</h3>
@@ -444,7 +350,6 @@ footer {
       <h3>Nutrition Program</h3>
       <p>Healthy meals and snacks every day.</p>
     </div>
-
   </div>
 </section>
 
@@ -453,7 +358,6 @@ footer {
   <h2>Community & Activities</h2>
 
   <div class="grid">
-
     <div class="card">
       <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800">
       <h3>Healthy Eating</h3>
@@ -465,7 +369,6 @@ footer {
       <h3>Community Events</h3>
       <p>Family and community engagement programs.</p>
     </div>
-
   </div>
 </section>
 

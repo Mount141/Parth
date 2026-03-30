@@ -20,25 +20,28 @@ body {
   background: #f0f4ff;
 }
 
-  .programs {
-  display: flex;
-  gap: 30px;
-  padding: 60px;
-  justify-content: center;
-  flex-wrap: wrap;
+  /* TEXT STYLE */
+.program-card h3 {
+  /* background: #3b82f6; */  /* Remove this */
+  color: #111; /* dark text color */
+  display: block; /* or inline-block if you want */
+  margin-bottom: 8px;
 }
 
-.program-card {
-  width: 260px;
-  padding: 25px;
-  border-radius: 20px;
-  background: #f9fafb;
-  position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  text-align: left;
-  overflow: hidden;
+.program-card span {
+  /* background: #3b82f6; */  /* Remove this */
+  color: #555; /* subtle text color */
+  display: block; /* for spacing */
+  margin-bottom: 12px;
+  font-size: 14px;
 }
 
+.program-card p {
+  /* background: #3b82f6; */  /* Remove this */
+  color: #333; /* paragraph text color */
+  padding: 0; /* remove extra padding */
+  margin: 0;
+}
 /* TOP RIGHT SHAPE */
 .program-card::after {
   content: '';

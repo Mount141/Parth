@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All Kids Learning Centre</title>
 
-<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -20,8 +18,7 @@
 }
 
 body {
-  background: #f8fafc;
-  color: #333;
+  background: linear-gradient(to bottom, #fdfbff, #f0f4ff);
 }
 
 /* Navbar */
@@ -30,12 +27,13 @@ body {
   justify-content: space-between;
   padding: 20px 40px;
   background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
 .logo {
   color: #6c63ff;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .navbar a {
@@ -44,19 +42,20 @@ body {
   color: #555;
 }
 
-/* Hero */
+/* HERO */
 .hero {
   height: 90vh;
-  background: linear-gradient(135deg, #6c63ff, #4facfe);
+  background: linear-gradient(135deg, #6c63ff, #4facfe, #00f2fe);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
+  border-radius: 0 0 40px 40px;
 }
 
 .hero h1 {
-  font-size: 44px;
+  font-size: 48px;
 }
 
 .hero p {
@@ -66,16 +65,17 @@ body {
 
 .hero button {
   margin-top: 25px;
-  padding: 12px 25px;
+  padding: 14px 30px;
   border-radius: 30px;
   border: none;
   background: white;
   color: #333;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Features */
+/* FEATURES */
 .features {
   padding: 80px 40px;
   text-align: center;
@@ -84,46 +84,71 @@ body {
 .feature-grid {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   margin-top: 40px;
   flex-wrap: wrap;
 }
 
 .card {
-  background: white;
+  background: linear-gradient(145deg, #ffffff, #f3f6ff);
   padding: 30px;
   width: 260px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.03);
 }
 
 .icon {
-  font-size: 30px;
-  color: #6c63ff;
+  font-size: 35px;
   margin-bottom: 15px;
 }
 
-/* Programs */
+/* colorful icons */
+.icon1 { color: #ff7b54; }
+.icon2 { color: #4facfe; }
+.icon3 { color: #00c9a7; }
+
+/* PROGRAMS */
 .programs {
   padding: 80px 40px;
-  background: #eef2ff;
   text-align: center;
+  background: linear-gradient(to right, #eef2ff, #f9fbff);
+  border-radius: 40px;
+  margin: 40px;
 }
 
 .program-box {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   margin-top: 40px;
   flex-wrap: wrap;
 }
 
-/* Contact */
+/* CTA */
+.cta {
+  margin: 60px;
+  padding: 50px;
+  text-align: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 30px;
+  color: white;
+}
+
+.cta button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  color: #333;
+}
+
+/* CONTACT */
 .contact {
   padding: 80px 40px;
   text-align: center;
@@ -135,7 +160,7 @@ body {
   margin: 10px auto;
   width: 320px;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #ddd;
 }
 
@@ -146,93 +171,96 @@ body {
   border: none;
   background: #6c63ff;
   color: white;
-  cursor: pointer;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   padding: 20px;
   background: #111827;
   color: white;
   text-align: center;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
 <header class="navbar">
   <h2 class="logo">All Kids Learning Centre</h2>
   <nav>
     <a href="#">Home</a>
     <a href="#">Programs</a>
-    <a href="#">Features</a>
     <a href="#">Contact</a>
   </nav>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <div>
-    <h1>Welcome to All Kids Learning Centre</h1>
-    <p>Safe, nurturing and fun learning environment for every child</p>
+    <h1>Fun • Safe • Learning</h1>
+    <p>Where every child grows, learns, and shines 🌟</p>
     <button>Enroll Now</button>
   </div>
 </section>
 
-<!-- Features -->
 <section class="features">
-  <h2>Why Choose Us</h2>
+  <h2>Why Parents Love Us</h2>
 
   <div class="feature-grid">
 
     <div class="card">
-      <i class="fas fa-baby icon"></i>
-      <h3>Child Care</h3>
-      <p>Safe and loving environment for your children.</p>
+      <i class="fas fa-baby icon icon1"></i>
+      <h3>Safe Care</h3>
+      <p>Loving and secure environment for children.</p>
     </div>
 
     <div class="card">
-      <i class="fas fa-book-open icon"></i>
-      <h3>Early Education</h3>
-      <p>Learning through play and structured activities.</p>
+      <i class="fas fa-book-open icon icon2"></i>
+      <h3>Learning</h3>
+      <p>Interactive and fun early education programs.</p>
     </div>
 
     <div class="card">
-      <i class="fas fa-utensils icon"></i>
-      <h3>Healthy Meals</h3>
-      <p>Nutritious meals provided daily.</p>
+      <i class="fas fa-apple-alt icon icon3"></i>
+      <h3>Healthy Food</h3>
+      <p>Fresh and nutritious meals every day.</p>
     </div>
 
   </div>
 </section>
 
-<!-- Programs -->
 <section class="programs">
   <h2>Our Programs</h2>
 
   <div class="program-box">
 
     <div class="card">
+      <i class="fas fa-baby-carriage icon icon1"></i>
       <h3>Infant Care</h3>
-      <p>0-2 years old nurturing and care.</p>
+      <p>0-2 years nurturing support</p>
     </div>
 
     <div class="card">
-      <h3>Toddler Program</h3>
-      <p>2-4 years interactive learning.</p>
+      <i class="fas fa-puzzle-piece icon icon2"></i>
+      <h3>Toddler</h3>
+      <p>Play-based learning activities</p>
     </div>
 
     <div class="card">
+      <i class="fas fa-school icon icon3"></i>
       <h3>Preschool</h3>
-      <p>Preparing children for school success.</p>
+      <p>School readiness program</p>
     </div>
 
   </div>
 </section>
 
-<!-- Contact -->
+<section class="cta">
+  <h2>Give Your Child the Best Start 🚀</h2>
+  <p>Enroll today and watch them grow!</p>
+  <button>Register Now</button>
+</section>
+
 <section class="contact">
   <h2>Contact Us</h2>
 

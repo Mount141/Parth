@@ -121,12 +121,15 @@ nav a:hover {
 .badge.yellow { background: #fde68a; }
 .badge.purple { background: #ddd6fe; }
 
-.welcome-hero .hero-image img {
-  width: 400px;
-  border-radius: 20px;
-  object-fit: cover;
-}
 
+
+.welcome-hero .hero-image img {
+  width: 100%;        /* fill the container */
+  max-width: 400px;   /* don’t stretch beyond this */
+  height: auto;       /* maintain aspect ratio */
+  border-radius: 20px;
+  object-fit: cover;  /* crop without distortion */
+}
 /* PROGRAMS */
 .programs {
   display: flex;

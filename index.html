@@ -16,12 +16,9 @@
   font-family: 'Poppins', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth; /* smooth scrolling for links */
-}
-
 body {
   background: #f0f4ff;
+  scroll-behavior: smooth;
 }
 
 /* HEADER */
@@ -33,7 +30,7 @@ header {
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .logo {
@@ -129,11 +126,11 @@ nav a:hover {
 .badge.purple { background: #ddd6fe; }
 
 .welcome-hero .hero-image img {
-  width: 100%;        
-  max-width: 400px;  
-  height: auto;      
+  width: 100%;
+  max-width: 400px;
+  height: auto;
   border-radius: 20px;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 /* PROGRAMS */
@@ -246,6 +243,51 @@ nav a:hover {
 .icon.green { color: #43e97b; }
 .icon.orange { color: #f7971e; }
 
+/* CONTACT SECTION */
+#contact {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.contact-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.contact-card hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.contact-card button {
+  padding:10px 20px;
+  background:#ff6b6b;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 /* FOOTER */
 footer {
   background: #1f2937;
@@ -272,7 +314,7 @@ footer {
 
 <!-- HERO -->
 <section id="home" class="hero">
-  <h1>Bright Futures Start Here </h1>
+  <h1>Bright Futures Start Here</h1>
   <p>Safe, Fun & Educational Childcare Environment</p>
   <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Kids learning">
 </section>
@@ -346,11 +388,13 @@ footer {
       <h3>Outdoor Activities</h3>
       <p>Daily outdoor play and exploration.</p>
     </div>
+
     <div class="card">
       <i class="fas fa-user-check icon blue"></i>
       <h3>Certified Staff</h3>
       <p>Highly trained and certified educators.</p>
     </div>
+
     <div class="card">
       <i class="fas fa-apple-alt icon orange"></i>
       <h3>Nutrition Program</h3>
@@ -360,7 +404,7 @@ footer {
 </section>
 
 <!-- COMMUNITY -->
-<section id="community">
+<section>
   <h2>Community & Activities</h2>
   <div class="grid">
     <div class="card">
@@ -368,6 +412,7 @@ footer {
       <h3>Healthy Eating</h3>
       <p>Teaching kids good food habits.</p>
     </div>
+
     <div class="card">
       <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800">
       <h3>Community Events</h3>
@@ -379,20 +424,32 @@ footer {
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
-  <input type="text" placeholder="Your Name"><br><br>
-  <input type="email" placeholder="Your Email"><br><br>
-  <textarea placeholder="Message"></textarea><br><br>
-  <button style="padding:10px 20px;background:#ff6b6b;color:white;border:none;border-radius:10px;">
-    Send Message
-  </button>
+  
+  <div class="contact-card">
+    <p><strong>All Kids Learning Centre</strong></p>
+    <p>123 Learning Lane<br>
+       Charlottetown, PE<br>
+       C1A 5T1
+    </p>
+    
+    <p><strong>Phone:</strong> (902) 555-1234</p>
+    <p><strong>Email:</strong> info@allkidslearningcentre.ca</p>
+    
+    <hr>
+    
+    <h3>Send Us a Message</h3>
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 </section>
 
 <footer>
   <p>© 2026 All Kids Learning Centre</p>
 </footer>
-
-</body>
-</html>
 
 </body>
 </html>

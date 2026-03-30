@@ -246,40 +246,56 @@ nav a:hover {
 /* MEET OUR DIRECTOR */
 #director {
   padding: 70px 20px;
-  text-align: center;
-  background: #f9f9f9;
+  background: linear-gradient(135deg,#ffecd2,#fcb69f);
 }
 
 #director h2 {
   font-size: 28px;
   margin-bottom: 40px;
-}
-
-#director .card {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  text-align: left;
-}
-
-#director .card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-#director .card h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+  text-align: center;
   color: #333;
 }
 
-#director .card p {
-  color: #555;
+#director .director-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#director .director-image {
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+#director .director-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#director .director-info {
+  flex: 2 1 400px;
+  background: rgba(255,255,255,0.8);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+#director .director-info h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ff6b6b;
+}
+
+#director .director-info p {
+  color: #333;
   line-height: 1.6;
 }
 
@@ -464,12 +480,16 @@ footer {
 <!-- MEET OUR DIRECTOR -->
 <section id="director">
   <h2>Meet Our Director</h2>
-  <div class="card">
-    <img src="images/director-placeholder.jpg" alt="Director Photo">
-    <h3>Pam Barrett – Director of Tiny Tot Early Years</h3>
-    <p>
-      Hi, my name is [Director Name]. I have been in the Early Childhood field for 35 years and employed with Tiny Tot Early Years Centre for the past 26 years. I have a diploma in Early Childhood Education from Holland College. I have attended numerous workshops and conferences to keep current of any changes or new learning strategies within the Early Childhood field. I am familiar with working in all age groups, but have spent the majority of my teaching within our Pre-Kindergarten program as well as our School-Age program. I am currently enrolled with UNB in the Bachelor Of Education in Early Childhood Degree Program. I hosted a school-age workshop titled “Too Cool for Daycare” in November 2011 for educators who were involved in after school care. I currently live in the Charlottetown area and have two children and two grandchildren.
-    </p>
+  <div class="director-container">
+    <div class="director-image">
+      <img src="images/director-placeholder.jpg" alt="Director Photo">
+    </div>
+    <div class="director-info">
+      <h3>Parth – Director of Tiny Tot Early Years</h3>
+      <p>
+        Hi, my name is Parth. I have been in the Early Childhood field for 35 years and employed with Tiny Tot Early Years Centre for the past 26 years. I have a diploma in Early Childhood Education from Holland College. I have attended numerous workshops and conferences to stay updated with new learning strategies. I am familiar with all age groups, but have spent the majority of my teaching within Pre-Kindergarten and School-Age programs. I am currently enrolled in UNB’s Bachelor Of Education in Early Childhood Degree Program. I hosted a school-age workshop titled “Too Cool for Daycare” in November 2011 for educators involved in after school care. I currently live in the Charlottetown area and have two children and two grandchildren.
+      </p>
+    </div>
   </div>
 </section>
 

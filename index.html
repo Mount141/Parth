@@ -1,1 +1,583 @@
-<iframe src="https://hello.theberkeley.com/l/901531/2026-06-12/6pc48n" width="100%" height="500" type="text/html" frameborder="0" allowTransparency="true" style="border: 0"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Vision Care — Fall Detection Demo</title>
+<style>
+  :root{
+    --bg:#090e1a; --panel:#111a2c; --panel2:#0d1524; --border:#1f2b42;
+    --text:#e6ebf5; --muted:#8a94ab; --amber:#f5a524; --red:#ef4444;
+    --green:#22c55e; --blue:#3b82f6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);}
+  .stage{width:1280px;max-width:100%;margin:0 auto;min-height:860px;background:var(--bg);position:relative;overflow:hidden;padding-top:40px;}
+
+  /* ---------- chapter bar ---------- */
+  .chapters{position:absolute;top:0;left:0;right:0;height:40px;display:flex;align-items:center;gap:0;background:#060a13;border-bottom:1px solid var(--border);z-index:80;padding:0 10px;}
+  .chapters .ch{flex:1;text-align:center;font-size:10.5px;color:#4b5468;padding:6px 4px;border-bottom:2px solid transparent;transition:all .3s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .chapters .ch.active{color:var(--amber);border-bottom-color:var(--amber);font-weight:700;}
+  .chapters .ch.done{color:#6f7994;}
+
+  /* ---------- generic full slide ---------- */
+  .slide{position:absolute;top:40px;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;opacity:0;pointer-events:none;transition:opacity .6s ease;z-index:30;background:var(--bg);}
+  .slide.show{opacity:1;pointer-events:auto;}
+  .slide .logo{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#f472b6,#60a5fa);display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:18px;}
+  .slide h1{margin:0 0 8px 0;font-size:28px;font-weight:700;letter-spacing:.2px;}
+  .slide h2{margin:0 0 26px 0;font-size:15px;color:var(--muted);font-weight:400;max-width:640px;}
+  .slide .badge{margin-top:6px;font-size:12px;color:var(--amber);border:1px solid #4a3510;background:#2a1f08;padding:5px 12px;border-radius:20px;}
+
+  .chiprow{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;max-width:820px;}
+  .chip{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 24px;min-width:170px;}
+  .chip .num{font-size:28px;font-weight:700;color:#fff;}
+  .chip .lbl{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
+
+  .featurecol{display:flex;gap:18px;max-width:900px;flex-wrap:wrap;justify-content:center;}
+  .feat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;width:250px;text-align:left;}
+  .feat .fi{font-size:22px;margin-bottom:10px;}
+  .feat .ft{font-size:14px;font-weight:700;margin-bottom:6px;}
+  .feat .fd{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+  /* ---------- app shell ---------- */
+  #app{position:absolute;top:40px;left:0;right:0;bottom:0;opacity:0;transition:opacity .6s ease;display:flex;}
+  #app.on{opacity:1;}
+  .sidebar{width:230px;background:var(--panel2);border-right:1px solid var(--border);padding:22px 18px;flex-shrink:0;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .brand .icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#f472b6,#60a5fa);display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .brand .name{font-weight:700;font-size:16px;}
+  .sub{font-size:11.5px;color:var(--muted);margin:2px 0 22px 0;}
+  .navlabel{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+  .navitem{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:7px 0;color:var(--text);}
+  .dot{width:8px;height:8px;border-radius:50%;background:#334;flex-shrink:0;}
+  .navitem.active .dot{background:var(--red);}
+  .sysbox{margin-top:28px;background:#0d2015;border:1px solid #163a24;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:9px;font-size:12.5px;}
+  .pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulseDot 1.8s infinite;}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55);}70%{box-shadow:0 0 0 7px rgba(34,197,94,0);}100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
+
+  .main{flex:1;padding:22px 26px;overflow:hidden;}
+  .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .topline h2{margin:0;font-size:19px;font-weight:700;}
+  .topline .rec{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .rec .rdot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.3s infinite;}
+  @keyframes blink{50%{opacity:.15;}}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+  .stat .lbl{font-size:12px;color:var(--muted);margin-bottom:10px;}
+  .stat .val{font-size:26px;font-weight:700;transition:color .3s ease;}
+  .stat .status{font-size:11.5px;margin-top:6px;}
+  .status.g{color:var(--green);} .status.a{color:var(--amber);} .status.r{color:var(--red);}
+
+  .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start;}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;}
+  .cardhead{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+
+  /* camera panel */
+  .camwrap{position:relative;border-radius:10px;overflow:hidden;background:#0a1120;height:290px;border:1px solid #1a2440;}
+  .room{position:absolute;inset:0;}
+  .floor{position:absolute;left:0;right:0;bottom:0;height:55%;background:#3a2d1f;}
+  .floor:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#4a3a28 0 26px,#43331f 26px 27px);}
+  .wall{position:absolute;left:0;right:0;top:0;height:45%;background:#1c2740;}
+  .bed{position:absolute;left:14px;top:14px;width:150px;height:55px;background:#dfe6f0;border-radius:6px;box-shadow:0 3px 0 #b9c3d3;}
+  .cambadge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);font-size:10.5px;padding:3px 8px;border-radius:5px;display:flex;align-items:center;gap:5px;}
+  .cambadge .rdot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.3s infinite;}
+  .caption{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);font-size:11.5px;padding:5px 10px;color:#cfd8ea;}
+
+  .figure{position:absolute;left:47%;bottom:24%;width:34px;height:76px;transform-origin:bottom center;transition:transform 1.1s cubic-bezier(.36,1.4,.4,1),bottom 1.1s ease,left 1.1s ease;}
+  .figure .head{width:16px;height:16px;border-radius:50%;background:#c9e26b;margin:0 auto;}
+  .figure .body{width:6px;height:44px;background:#c9e26b;margin:2px auto 0;border-radius:3px;}
+  .figure .legL,.figure .legR{position:absolute;bottom:0;width:5px;height:24px;background:#c9e26b;border-radius:3px;}
+  .figure .legL{left:9px;transform:rotate(-8deg);} .figure .legR{right:9px;transform:rotate(8deg);}
+  .figure.fallen{transform:rotate(90deg) translate(6px,10px);bottom:14%;}
+  .figure.assisted{left:52%;}
+
+  .staff{position:absolute;bottom:24%;left:92%;width:30px;height:70px;opacity:0;transform-origin:bottom center;transition:left 1.6s ease,opacity .4s ease;}
+  .staff.walkin{opacity:1;left:60%;}
+  .staff.walking{animation:walkbounce .4s infinite;}
+  @keyframes walkbounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+  .staff .shead{width:14px;height:14px;border-radius:50%;background:#60a5fa;margin:0 auto;}
+  .staff .sbody{width:6px;height:38px;background:#60a5fa;margin:2px auto 0;border-radius:3px;}
+  .staff .slegL,.staff .slegR{position:absolute;bottom:0;width:5px;height:22px;background:#60a5fa;border-radius:3px;}
+  .staff .slegL{left:8px;} .staff .slegR{right:8px;}
+
+  .fallbox{position:absolute;left:41%;bottom:12%;width:80px;height:60px;border:2px dashed var(--red);border-radius:4px;opacity:0;transition:opacity .4s ease;}
+  .fallbox.show{opacity:1;}
+  .fallbox .tag{position:absolute;top:-20px;left:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;white-space:nowrap;}
+  .analyzing{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:12px;color:var(--amber);background:rgba(0,0,0,.55);padding:5px 12px;border-radius:20px;opacity:0;transition:opacity .3s ease;}
+  .analyzing.show{opacity:1;}
+
+  /* events card */
+  .eventcard{border-left:4px solid var(--amber);background:#151022;border-radius:8px;padding:14px 16px;opacity:0;transform:translateY(-10px);transition:all .5s ease;max-height:0;overflow:hidden;}
+  .eventcard.show{opacity:1;transform:translateY(0);max-height:500px;border-left-color:var(--red);background:#1a1220;box-shadow:0 0 0 1px rgba(239,68,68,.25);}
+  .eventtop{display:flex;align-items:center;gap:9px;margin-bottom:8px;}
+  .eventtop .sev{width:12px;height:12px;border-radius:50%;background:var(--red);animation:pulseDot 1.4s infinite;box-shadow:0 0 0 0 rgba(239,68,68,.6);}
+  .eventtop .name{font-size:15.5px;font-weight:700;letter-spacing:.3px;}
+  .eventrow{display:flex;gap:8px;font-size:12.5px;color:#cbd3e3;margin:5px 0;}
+  .eventrow b{color:#fff;}
+  .noevents{color:var(--muted);font-size:13px;text-align:center;padding:30px 0;}
+  .statusline{margin-top:10px;padding-top:10px;border-top:1px solid #2a2035;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:7px;}
+  .statusline.crit{color:var(--red);} .statusline.resp{color:var(--amber);} .statusline.done{color:var(--green);}
+
+  /* phone / telegram */
+  .phonewrap{display:flex;justify-content:center;}
+  .phone{width:220px;background:#000;border-radius:26px;padding:8px;border:2px solid #222;}
+  .screen{background:#0e1621;border-radius:19px;overflow:hidden;height:380px;display:flex;flex-direction:column;}
+  .tgheader{background:#182533;padding:10px 12px;display:flex;align-items:center;gap:8px;}
+  .tgheader .av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#f472b6);display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .tgheader .tt{font-size:12.5px;font-weight:700;}
+  .tgheader .st{font-size:10px;color:#7f93a8;}
+  .tgbody{flex:1;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden;}
+  .typing{align-self:flex-start;background:#1f2c3d;border-radius:14px;padding:8px 12px;font-size:11px;color:#93a2b8;opacity:0;transition:opacity .3s;}
+  .typing.show{opacity:1;}
+  .typing span{display:inline-block;width:5px;height:5px;background:#93a2b8;border-radius:50%;margin-right:3px;animation:tdot 1s infinite;}
+  .typing span:nth-child(2){animation-delay:.15s;} .typing span:nth-child(3){animation-delay:.3s;}
+  @keyframes tdot{0%,60%,100%{opacity:.3;} 30%{opacity:1;}}
+  .bubble{align-self:flex-start;max-width:88%;background:#1f2c3d;border-radius:4px 14px 14px 14px;padding:10px 12px;font-size:11.5px;line-height:1.5;opacity:0;transform:translateY(8px) scale(.96);transition:all .35s cubic-bezier(.2,1,.3,1);}
+  .bubble.show{opacity:1;transform:translateY(0) scale(1);}
+  .bubble .btitle{color:#ef4444;font-weight:700;margin-bottom:4px;}
+  .bubble .brow{color:#c3ccdb;}
+  .bubble .btime{margin-top:5px;font-size:9.5px;color:#6b7a90;display:flex;align-items:center;gap:4px;}
+  .ackbtn{margin-top:8px;display:inline-block;background:#2a3a52;border:1px solid #3a4d6b;color:#bcd0ee;font-size:10.5px;padding:5px 10px;border-radius:6px;position:relative;transition:all .25s ease;}
+  .ackbtn.tapped{background:var(--green);border-color:var(--green);color:#062910;}
+  .ackbtn .ripple{position:absolute;inset:0;border-radius:6px;border:2px solid var(--green);opacity:0;}
+  .ackbtn.tapped .ripple{animation:ripple .5s ease-out;}
+  @keyframes ripple{0%{opacity:.8;transform:scale(1);}100%{opacity:0;transform:scale(1.5);}}
+  .replybubble{align-self:flex-end;max-width:88%;background:#2a4a7a;border-radius:14px 4px 14px 14px;padding:9px 12px;font-size:11.5px;line-height:1.5;opacity:0;transform:translateY(8px) scale(.96);transition:all .35s cubic-bezier(.2,1,.3,1);color:#e7eefc;}
+  .replybubble.show{opacity:1;transform:translateY(0) scale(1);}
+
+  /* timeline / captions */
+  .timeline{margin-top:20px;display:flex;gap:8px;}
+  .tlstep{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:9px 11px;font-size:11px;color:var(--muted);transition:all .3s ease;}
+  .tlstep b{display:block;font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;color:#5c6478;margin-bottom:3px;}
+  .tlstep.active{border-color:var(--amber);color:#fff;background:#1c1608;}
+  .tlstep.active b{color:var(--amber);}
+  .tlstep.done{border-color:#264a30;color:#a9c9b3;}
+  .tlstep.done b{color:var(--green);}
+
+  .captionbar{position:absolute;left:26px;right:26px;bottom:16px;background:rgba(5,8,16,.9);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:13px;color:#e6ebf5;text-align:center;min-height:20px;z-index:70;display:none;}
+
+  .replaybtn{position:absolute;top:8px;right:16px;background:var(--panel);border:1px solid var(--border);color:var(--text);font-size:12px;padding:7px 14px;border-radius:8px;cursor:pointer;z-index:90;opacity:0;pointer-events:none;transition:opacity .3s;}
+  .replaybtn.show{opacity:1;pointer-events:auto;}
+  .outrobtn{background:var(--panel);border:1px solid var(--border);color:var(--text);font-size:13px;padding:9px 18px;border-radius:9px;cursor:pointer;margin-top:22px;}
+
+  .controls{position:absolute;bottom:16px;left:26px;display:flex;align-items:center;gap:8px;z-index:90;}
+  .ctlbtn{background:var(--panel);border:1px solid var(--border);color:var(--text);font-size:12px;padding:7px 12px;border-radius:8px;cursor:pointer;}
+  .ctlbtn:hover{border-color:var(--border-strong,var(--border));}
+  .speedgrp{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .speedgrp button{background:transparent;border:none;color:var(--muted);font-size:11.5px;padding:7px 10px;cursor:pointer;}
+  .speedgrp button.active{background:var(--amber);color:#2a1f08;font-weight:700;}
+  .pausedflag{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:var(--amber);color:#2a1f08;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;z-index:95;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+  .pausedflag.show{opacity:1;}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="chapters" id="chapters">
+    <div class="ch" data-i="0">Intro</div>
+    <div class="ch" data-i="1">The problem</div>
+    <div class="ch" data-i="2">Our solution</div>
+    <div class="ch" data-i="3">Live demo</div>
+    <div class="ch" data-i="4">Staff response</div>
+    <div class="ch" data-i="5">Results</div>
+  </div>
+
+  <button class="replaybtn" id="replayBtn" onclick="restart()">↻ Replay demo</button>
+  <div class="pausedflag" id="pausedFlag">⏸ Paused</div>
+
+  <div class="controls">
+    <button class="ctlbtn" id="pauseBtn" onclick="togglePause()">⏸ Pause</button>
+    <button class="ctlbtn" id="skipBtn" onclick="skipStep()">⏭ Skip to next</button>
+    <div class="speedgrp" id="speedGrp">
+      <button data-s="0.5">0.5x</button>
+      <button data-s="1" class="active">1x</button>
+      <button data-s="1.5">1.5x</button>
+      <button data-s="2">2x</button>
+    </div>
+  </div>
+
+  <div class="slide" id="slideIntro">
+    <div class="logo">🧠</div>
+    <h1>AI Vision Care</h1>
+    <h2>Automated fall detection — process walkthrough</h2>
+    <div class="badge">SIMULATION · for presentation purposes</div>
+  </div>
+
+  <div class="slide" id="slideProblem">
+    <h1>The problem</h1>
+    <h2>Falls are the leading cause of injury among older adults — and every minute of delayed response increases the risk of serious harm.</h2>
+    <div class="chiprow">
+      <div class="chip"><div class="num">1 in 4</div><div class="lbl">seniors aged 65+ fall each year</div></div>
+      <div class="chip"><div class="num">~20 min</div><div class="lbl">average time before a fall is noticed without monitoring</div></div>
+      <div class="chip"><div class="num">1 in 5</div><div class="lbl">falls cause a serious injury requiring medical care</div></div>
+    </div>
+  </div>
+
+  <div class="slide" id="slideSolution">
+    <h1>Our solution</h1>
+    <h2>AI Vision Care watches for falls in real time and alerts staff immediately — without recording or storing video.</h2>
+    <div class="featurecol">
+      <div class="feat"><div class="fi">🔒</div><div class="ft">Privacy-preserving</div><div class="fd">Only skeletal pose points are analyzed on-device. No video is stored or transmitted.</div></div>
+      <div class="feat"><div class="fi">⚡</div><div class="ft">Real-time detection</div><div class="fd">Falls are identified within seconds using on-site AI processing — no cloud round-trip.</div></div>
+      <div class="feat"><div class="fi">📲</div><div class="ft">Multi-channel alerts</div><div class="fd">Staff dashboard and Telegram notifications fire the moment a fall is confirmed.</div></div>
+    </div>
+  </div>
+
+  <div class="slide" id="slideOutro">
+    <h1>Results</h1>
+    <h2>What automated detection changes for resident safety</h2>
+    <div class="chiprow">
+      <div class="chip"><div class="num">~4s</div><div class="lbl">average time from fall to confirmed detection</div></div>
+      <div class="chip"><div class="num">&lt;10s</div><div class="lbl">alert delivered to staff dashboard and phone</div></div>
+      <div class="chip"><div class="num">0</div><div class="lbl">video frames stored — pose data only</div></div>
+      <div class="chip"><div class="num">24/7</div><div class="lbl">continuous monitoring, 86 residents protected</div></div>
+    </div>
+    <button class="outrobtn" onclick="restart()">↻ Watch the demo again</button>
+  </div>
+
+  <div id="app">
+    <div class="sidebar">
+      <div class="brand"><div class="icon">🧠</div><div class="name">AI Vision Care</div></div>
+      <div class="sub">AI Healthcare Monitoring System</div>
+      <div class="navlabel">Navigation</div>
+      <div class="navitem active"><span class="dot"></span>Dashboard</div>
+      <div class="navitem"><span class="dot"></span>Alerts</div>
+      <div class="navitem"><span class="dot"></span>Analytics</div>
+      <div class="navitem"><span class="dot"></span>Live camera</div>
+      <div class="sysbox"><span class="pulse-dot"></span>AI engine online</div>
+    </div>
+
+    <div class="main">
+      <div class="topline">
+        <h2>Executive safety dashboard</h2>
+        <div class="rec"><span class="rdot"></span>Live demo</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="lbl">Connected cameras</div><div class="val">1</div><div class="status g">● Online</div></div>
+        <div class="stat"><div class="lbl">Residents monitored</div><div class="val">86</div><div class="status g">● Protected</div></div>
+        <div class="stat"><div class="lbl">Today's events</div><div class="val" id="eventsVal">0</div><div class="status a" id="eventsStatus">● Monitoring</div></div>
+        <div class="stat"><div class="lbl">Critical alerts</div><div class="val" id="critVal">20</div><div class="status r" id="critStatus">● Attention required</div></div>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="cardhead">📹 Live camera — Room 104</div>
+          <div class="camwrap">
+            <div class="room">
+              <div class="wall"></div>
+              <div class="floor"></div>
+              <div class="bed"></div>
+            </div>
+            <div class="figure" id="figure">
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="legL"></div>
+              <div class="legR"></div>
+            </div>
+            <div class="staff" id="staffFigure">
+              <div class="shead"></div>
+              <div class="sbody"></div>
+              <div class="slegL"></div>
+              <div class="slegR"></div>
+            </div>
+            <div class="fallbox" id="fallbox"><span class="tag">FALL RISK 92%</span></div>
+            <div class="analyzing" id="analyzing">🧠 Analyzing posture…</div>
+            <div class="cambadge"><span class="rdot"></span>CAM-RM104</div>
+            <div class="caption" id="camCaption">Status: monitoring — no anomalies detected</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardhead">🚨 Latest AI events</div>
+          <div class="noevents" id="noEvents">No events yet today</div>
+          <div class="eventcard" id="eventCard">
+            <div class="eventtop"><span class="sev"></span><span class="name">CONFIRMED_FALL</span></div>
+            <div class="eventrow">📍 Location: <b>Room 104</b></div>
+            <div class="eventrow">📺 Camera: <b>CAM-RM104</b></div>
+            <div class="eventrow">⏰ Time: <b id="eventTime">—</b></div>
+            <div class="eventrow">🧠 Risk score: <b id="riskVal">0%</b></div>
+            <div class="statusline crit" id="statusLine">🔴 Critical — awaiting response</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tlstep" id="tl0"><b>Step 1</b>Monitoring</div>
+        <div class="tlstep" id="tl1"><b>Step 2</b>Fall detected</div>
+        <div class="tlstep" id="tl2"><b>Step 3</b>Dashboard alert</div>
+        <div class="tlstep" id="tl3"><b>Step 4</b>Telegram sent</div>
+        <div class="tlstep" id="tl4"><b>Step 5</b>Staff responds</div>
+        <div class="tlstep" id="tl5"><b>Step 6</b>Resolved</div>
+      </div>
+    </div>
+
+    <div style="width:260px;flex-shrink:0;padding:22px 20px;border-left:1px solid var(--border);">
+      <div class="cardhead" style="margin-bottom:14px;">💬 Staff phone</div>
+      <div class="phonewrap">
+        <div class="phone">
+          <div class="screen">
+            <div class="tgheader">
+              <div class="av">🧠</div>
+              <div><div class="tt">AI Vision Care Bot</div><div class="st">Telegram</div></div>
+            </div>
+            <div class="tgbody" id="tgbody">
+              <div class="typing" id="typing"><span></span><span></span><span></span></div>
+              <div class="bubble" id="bubble">
+                <div class="btitle">🚨 FALL DETECTED</div>
+                <div class="brow">Room 104 · CAM-RM104</div>
+                <div class="brow">Risk score: <b id="bubbleRisk">92%</b></div>
+                <div class="brow">Please check on resident immediately.</div>
+                <div class="ackbtn" id="ackBtn">Acknowledge<span class="ripple"></span></div>
+                <div class="btime">✓✓ <span id="bubbleTime">—</span></div>
+              </div>
+              <div class="replybubble" id="replyBubble">On my way — ETA 60s 🏃</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="captionbar" id="captionBar"></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const figure = $('figure'), fallbox = $('fallbox'), analyzing = $('analyzing'), camCaption = $('camCaption');
+const staffFigure = $('staffFigure');
+const noEvents = $('noEvents'), eventCard = $('eventCard'), eventsVal = $('eventsVal'), eventsStatus = $('eventsStatus');
+const eventTime = $('eventTime'), riskVal = $('riskVal'), statusLine = $('statusLine');
+const typing = $('typing'), bubble = $('bubble'), bubbleRisk = $('bubbleRisk'), bubbleTime = $('bubbleTime');
+const ackBtn = $('ackBtn'), replyBubble = $('replyBubble');
+const critVal = $('critVal'), critStatus = $('critStatus');
+const captionBar = $('captionBar'), replayBtn = $('replayBtn');
+const appEl = $('app');
+const slides = { intro:$('slideIntro'), problem:$('slideProblem'), solution:$('slideSolution'), outro:$('slideOutro') };
+const tl = [0,1,2,3,4,5].map(i=>$('tl'+i));
+const chapters = Array.from(document.querySelectorAll('.chapters .ch'));
+
+let gen = 0;
+let paused = false;
+let speed = 1;
+let skipRequested = false;
+const pauseBtn = $('pauseBtn');
+const pausedFlag = $('pausedFlag');
+const skipBtn = $('skipBtn');
+const speedGrp = $('speedGrp');
+
+function alive(myGen){ return myGen === gen; }
+
+function wait(ms, myGen){
+  return new Promise(resolve=>{
+    let elapsed = 0;
+    const tickMs = 40;
+    function tick(){
+      if(!alive(myGen)){ resolve(); return; }
+      if(skipRequested){ skipRequested=false; resolve(); return; }
+      if(!paused){ elapsed += tickMs * speed; }
+      if(elapsed >= ms){ resolve(); return; }
+      setTimeout(tick, tickMs);
+    }
+    tick();
+  });
+}
+function sleep(ms, myGen){ return wait(ms, myGen); }
+
+function togglePause(){
+  paused = !paused;
+  pauseBtn.textContent = paused ? '▶ Resume' : '⏸ Pause';
+  pausedFlag.classList.toggle('show', paused);
+}
+function skipStep(){ skipRequested = true; }
+speedGrp.addEventListener('click', e=>{
+  const b = e.target.closest('button[data-s]');
+  if(!b) return;
+  speed = parseFloat(b.dataset.s);
+  Array.from(speedGrp.children).forEach(c=>c.classList.remove('active'));
+  b.classList.add('active');
+});
+
+function showSlide(key){
+  Object.values(slides).forEach(s=>s.classList.remove('show'));
+  if(key) slides[key].classList.add('show');
+}
+function setChapter(i){
+  chapters.forEach((c,idx)=>{
+    c.classList.remove('active','done');
+    if(idx<i) c.classList.add('done');
+    if(idx===i) c.classList.add('active');
+  });
+}
+function setStep(i){
+  tl.forEach((el,idx)=>{
+    el.classList.remove('active','done');
+    if(idx<i) el.classList.add('done');
+    if(idx===i) el.classList.add('active');
+  });
+}
+function setCaption(text){
+  captionBar.style.display='block';
+  captionBar.style.opacity=0;
+  captionBar.textContent=text;
+  requestAnimationFrame(()=>{ captionBar.style.transition='opacity .4s ease'; captionBar.style.opacity=1; });
+}
+function hideCaption(){ captionBar.style.display='none'; }
+function nowStr(){ const d=new Date(); return d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}); }
+function animateNum(el, target, dur, suffix){
+  const start=performance.now();
+  function tick(t){
+    const p=Math.min(1,(t-start)/dur);
+    el.textContent = Math.round(p*target)+(suffix||'');
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+async function playSequence(){
+  const myGen = gen;
+
+  // Chapter 0 — intro
+  setChapter(0); hideCaption(); showSlide('intro');
+  await sleep(3200, myGen); if(!alive(myGen)) return;
+
+  // Chapter 1 — problem
+  setChapter(1); showSlide('problem');
+  setCaption('Falls are the leading cause of injury among older adults — response time is the single biggest factor in outcomes.');
+  await sleep(6000, myGen); if(!alive(myGen)) return;
+
+  // Chapter 2 — solution
+  setChapter(2); showSlide('solution');
+  setCaption('AI Vision Care detects falls on-device from pose data alone — no video is ever stored.');
+  await sleep(6200, myGen); if(!alive(myGen)) return;
+
+  // Chapter 3 — live demo begins
+  setChapter(3); showSlide(null); appEl.classList.add('on');
+  setStep(0);
+  setCaption('Step 1 · The AI camera continuously monitors the room in real time — no footage is stored, only posture data.');
+  await sleep(3600, myGen); if(!alive(myGen)) return;
+
+  setStep(1);
+  setCaption('Step 2 · Resident loses balance and falls — the AI flags the abnormal posture within moments.');
+  figure.classList.add('fallen');
+  camCaption.textContent='Status: analyzing posture change…';
+  await sleep(400, myGen); if(!alive(myGen)) return;
+  analyzing.classList.add('show');
+  await sleep(2600, myGen); if(!alive(myGen)) return;
+  analyzing.classList.remove('show');
+  fallbox.classList.add('show');
+  camCaption.textContent='FALL DETECTED — confidence 92%';
+  await sleep(2200, myGen); if(!alive(myGen)) return;
+
+  setStep(2);
+  setCaption('Step 3 · An alert is created instantly on the staff dashboard, with location, camera and risk score.');
+  noEvents.style.display='none';
+  eventCard.classList.add('show');
+  eventTime.textContent = nowStr();
+  animateNum(riskVal, 92, 900, '%');
+  eventsVal.textContent='1';
+  eventsStatus.textContent='● 1 new event';
+  eventsStatus.className='status r';
+  await sleep(4200, myGen); if(!alive(myGen)) return;
+
+  setStep(3);
+  setCaption('Step 4 · A Telegram notification reaches on-duty staff on their phone — no delay, no missed calls.');
+  typing.classList.add('show');
+  await sleep(1800, myGen); if(!alive(myGen)) return;
+  typing.classList.remove('show');
+  bubble.classList.add('show');
+  bubbleRisk.textContent='92%';
+  bubbleTime.textContent = nowStr();
+  await sleep(2600, myGen); if(!alive(myGen)) return;
+
+  // Chapter 4 — staff response
+  setChapter(4); setStep(4);
+  setCaption('Step 5 · Staff acknowledges the alert on their phone and heads to the room.');
+  await sleep(1400, myGen); if(!alive(myGen)) return;
+  ackBtn.classList.add('tapped');
+  ackBtn.textContent='Acknowledged ✓';
+  statusLine.textContent='🟠 Staff responding';
+  statusLine.className='statusline resp';
+  await sleep(900, myGen); if(!alive(myGen)) return;
+  replyBubble.classList.add('show');
+  await sleep(1800, myGen); if(!alive(myGen)) return;
+
+  setCaption('Step 5 · Staff member arrives in the room and helps the resident stand up safely.');
+  camCaption.textContent='Staff entering room…';
+  staffFigure.classList.add('walkin','walking');
+  await sleep(1700, myGen); if(!alive(myGen)) return;
+  staffFigure.classList.remove('walking');
+  camCaption.textContent='Assisting resident to stand…';
+  await sleep(1200, myGen); if(!alive(myGen)) return;
+  fallbox.classList.remove('show');
+  figure.classList.remove('fallen');
+  figure.classList.add('assisted');
+  await sleep(1500, myGen); if(!alive(myGen)) return;
+  camCaption.textContent='Resident back on their feet — situation resolved';
+  await sleep(1600, myGen); if(!alive(myGen)) return;
+
+  setCaption('Safety net · If no one had acknowledged within 60 seconds, the system would automatically escalate to the nurse station and emergency contact.');
+  await sleep(4400, myGen); if(!alive(myGen)) return;
+
+  setStep(5);
+  setCaption('Step 6 · Resident is checked on and the event is marked resolved — full response logged for reporting.');
+  statusLine.textContent='🟢 Resolved — response time 0:47';
+  statusLine.className='statusline done';
+  animateNum(critVal, 19, 600, '');
+  critStatus.textContent='● 1 resolved today';
+  critStatus.className='status g';
+  staffFigure.classList.remove('walkin');
+  await sleep(3600, myGen); if(!alive(myGen)) return;
+
+  // Chapter 5 — outro
+  setChapter(5); appEl.classList.remove('on'); showSlide('outro');
+  setCaption('From fall to resolved response — automated, logged, and fast enough to matter.');
+  await sleep(1200, myGen); if(!alive(myGen)) return;
+  hideCaption();
+  replayBtn.classList.add('show');
+}
+
+function resetState(){
+  paused = false;
+  skipRequested = false;
+  pauseBtn.textContent = '⏸ Pause';
+  pausedFlag.classList.remove('show');
+  replayBtn.classList.remove('show');
+  figure.classList.remove('fallen');
+  figure.classList.remove('assisted');
+  staffFigure.classList.remove('walkin','walking');
+  fallbox.classList.remove('show');
+  analyzing.classList.remove('show');
+  camCaption.textContent='Status: monitoring — no anomalies detected';
+  noEvents.style.display='block';
+  eventCard.classList.remove('show');
+  eventsVal.textContent='0';
+  eventsStatus.textContent='● Monitoring';
+  eventsStatus.className='status a';
+  riskVal.textContent='0%';
+  statusLine.textContent='🔴 Critical — awaiting response';
+  statusLine.className='statusline crit';
+  typing.classList.remove('show');
+  bubble.classList.remove('show');
+  ackBtn.classList.remove('tapped');
+  ackBtn.textContent='Acknowledge';
+  replyBubble.classList.remove('show');
+  critVal.textContent='20';
+  critStatus.textContent='● Attention required';
+  critStatus.className='status r';
+  tl.forEach(el=>el.classList.remove('active','done'));
+  appEl.classList.remove('on');
+  showSlide(null);
+}
+
+function restart(){
+  gen++;
+  resetState();
+  playSequence();
+}
+
+playSequence();
+</script>
+</body>
+</html>
+

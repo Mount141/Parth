@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Raksha Bandhan ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="confetti"></div>
+
+  <main class="app">
+    <section class="screen active" id="home">
+      <div class="stars">✦ ✧ ✦ ✧ ✦</div>
+      <div class="cartoon">😜</div>
+      <p class="tiny">HEY SIS... 👀</p>
+      <h1>Wait...<br><span>I have something<br>for you ❤️</span></h1>
+      <button class="primary" onclick="showScreen('reveal'); confetti()">OPEN YOUR SURPRISE 🎁</button>
+      <p class="hint">P.S. It's definitely better than a boring Rakhi gift 😎</p>
+    </section>
+
+    <section class="screen" id="reveal">
+      <div class="sparkles">🎉 ✨ 🎊 ✨ 🎉</div>
+      <div class="cartoon big">😜</div>
+      <h1>Happy<br><span>Raksha Bandhan, Sis!</span> ❤️</h1>
+      <p>From your favourite annoying brother 😎</p>
+      <button class="primary" onclick="showScreen('jokes')">YAYYY! 😍</button>
+    </section>
+
+    <section class="screen" id="jokes">
+      <h2>BROTHER–SISTER<br><span>FUNNY TALKS 😂</span></h2>
+      <div class="chat">
+        <div class="bubble sis">Sister: Bhai, can you give me ₹500? 🥺</div>
+        <div class="bubble bro">Brother: Why? 🤨</div>
+        <div class="bubble sis">Sister: Rakhi gift ❤️</div>
+        <div class="bubble bro">Brother: Here's ₹50. 😎</div>
+        <div class="bubble sis">Sister: 😐</div>
+        <div class="bubble bro">Brother: The remaining ₹450 is emotional support. 😂</div>
+      </div>
+      <button class="primary" onclick="showScreen('things')">NEXT JOKE →</button>
+    </section>
+
+    <section class="screen" id="things">
+      <h2>THINGS <span>SHE</span><br>THINKS I AM ❤️</h2>
+      <div class="cards">
+        <div>🏧<b>ATM</b></div>
+        <div>🚗<b>Personal Driver</b></div>
+        <div>🍕<b>Food Delivery</b></div>
+        <div>💻<b>IT Support</b></div>
+        <div>🥷<b>Bodyguard</b></div>
+        <div>✨<b>Magic Man</b></div>
+      </div>
+      <button class="primary" onclick="showScreen('actually')">NEXT →</button>
+    </section>
+
+    <section class="screen" id="actually">
+      <h2>THINGS I <span>ACTUALLY</span> AM ❤️</h2>
+      <div class="list">
+        <p>🛡️ Her unpaid security guard</p>
+        <p>💸 Her emergency ATM</p>
+        <p>🥊 Her permanent punching bag</p>
+        <p>😂 Her personal comedian</p>
+        <p>😎 Her partner in crime</p>
+        <p>❤️ And unfortunately... her BROTHER.</p>
+      </div>
+      <button class="primary" onclick="showScreen('memories')">LOL TRUE! 😅</button>
+    </section>
+
+    <section class="screen" id="memories">
+      <h2>OUR MEMORIES ❤️</h2>
+      <p>Add your own photos later by replacing these placeholders.</p>
+      <div class="photos">
+        <div>📸<br>Photo 1</div>
+        <div>📸<br>Photo 2</div>
+        <div>📸<br>Photo 3</div>
+        <div>📸<br>Photo 4</div>
+      </div>
+      <button class="primary" onclick="showScreen('heart')">MORE MEMORIES →</button>
+    </section>
+
+    <section class="screen" id="heart">
+      <h2>JOKES APART... ❤️</h2>
+      <div class="heart-note">
+        <p>No matter how much we fight, annoy each other, steal each other's food, or blame each other...</p>
+        <h1>I'm really lucky to have you as my sister. ❤️</h1>
+        <p>You're my best friend, my partner in crime, and my forever connection. 🫶</p>
+      </div>
+      <h1 class="rakhi">Happy Raksha Bandhan! 🎀</h1>
+      <button class="primary" onclick="showScreen('surprise')">ONE MORE SURPRISE 👀</button>
+    </section>
+
+    <section class="screen" id="surprise">
+      <h2>ONE MORE SURPRISE? 😈</h2>
+      <p>Pick one. I dare you.</p>
+      <div class="choices">
+        <button onclick="roast()">😂 Roast My Sister</button>
+        <button onclick="sweet()">❤️ Heart Touching Note</button>
+        <button onclick="confetti(); finalMessage()">🎉 CONFETTI BLAST</button>
+      </div>
+      <div id="result"></div>
+      <button class="secondary" onclick="showScreen('home')">↩ BACK HOME</button>
+    </section>
+
+    <footer>⭐ Made with ❤️ by your brother • Happy Raksha Bandhan! 🎀</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

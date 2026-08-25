@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Raksha Bandhan ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <section class="screen active" id="home">
+      <div class="stars">✦ ✧ ✦ ✧ ✦</div>
+      <div class="cartoon">🎀</div>
+      <p class="tiny">HEY SIS... 👀</p>
+      <h1>Wait...<br><span>I have something<br>for you ❤️</span></h1>
+      <button class="primary" onclick="showScreen('reveal'); confetti()">OPEN YOUR SURPRISE 🎁</button>
+      <p class="hint">P.S. It's definitely better than a boring Rakhi gift 😎</p>
+    </section>
+
+    <section class="screen" id="reveal">
+      <div class="sparkles">🎉 ✨ 🎊 ✨ 🎉</div>
+      <div class="cartoon big">🥳</div>
+      <h1>Happy<br><span>Raksha Bandhan, Sis!</span> ❤️</h1>
+      <p class="hint">From your favourite annoying brother 😎</p>
+      <button class="primary" onclick="showScreen('lieDetector')">YAYYY! 😍</button>
+    </section>
+
+    <!-- NEW: replaces the old "jokes" chat screen -->
+    <section class="screen" id="lieDetector">
+      <div class="stars">🕵️ ✨ 🕵️</div>
+      <h2>SIBLING <span>LIE DETECTOR</span> 😂</h2>
+      <p class="hint" id="ldSub">3 questions. Zero honesty expected.</p>
+
+      <div class="ld-card" id="ld-q1">
+        <div class="ld-q">Q1: When I ask you for ₹500...</div>
+        <div class="ld-options">
+          <button onclick="ldPick(this,'q1',1,'🚨 LIE DETECTED. Alarm going off.')">"I'll send it right now!" 😇</button>
+          <button onclick="ldPick(this,'q1',0,'🟢 TRUTH. Finally, some honesty.')">"Let me check my balance..." 👀</button>
+        </div>
+        <div class="ld-reaction" id="ld-r1"></div>
+      </div>
+
+      <div class="ld-card ld-hidden" id="ld-q2">
+        <div class="ld-q">Q2: Who finished the last snack and blamed the other one?</div>
+        <div class="ld-options">
+          <button onclick="ldPick(this,'q2',1,'🚨 LIE DETECTED. The wrapper was under your pillow.')">"Definitely not me." 🙈</button>
+          <button onclick="ldPick(this,'q2',0,'🟢 TRUTH. Shocking, but we\'ll allow it.')">"Okay fine, it was me." 😂</button>
+        </div>
+        <div class="ld-reaction" id="ld-r2"></div>
+      </div>
+
+      <div class="ld-card ld-hidden" id="ld-q3">
+        <div class="ld-q">Q3: How annoying am I on a scale of 1–10?</div>
+        <div class="ld-options">
+          <button onclick="ldPick(this,'q3',1,'🚨 LIE DETECTED. Sensors are literally on fire.')">"A solid 2. Very chill." 😌</button>
+          <button onclick="ldPick(this,'q3',0,'🟢 TRUTH. At least we agree on something.')">"A confident 10." 💯</button>
+        </div>
+        <div class="ld-reaction" id="ld-r3"></div>
+      </div>
+
+      <div class="ld-score" id="ldScore"></div>
+      <button class="primary ld-hidden" id="ldNextBtn" onclick="ldNext()">NEXT →</button>
+    </section>
+
+    <section class="screen" id="things">
+      <h2>THINGS <span>SHE</span><br>THINKS I AM ❤️</h2>
+      <div class="cards">
+        <div>🏧<b>ATM</b></div>
+        <div>🚗<b>Personal Driver</b></div>
+        <div>🍕<b>Food Delivery</b></div>
+        <div>💻<b>IT Support</b></div>
+        <div>🥷<b>Bodyguard</b></div>
+        <div>✨<b>Magic Man</b></div>
+      </div>
+      <button class="primary" onclick="showScreen('actually')">NEXT →</button>
+    </section>
+
+    <section class="screen" id="actually">
+      <h2>THINGS I <span>ACTUALLY</span> AM ❤️</h2>
+      <div class="list">
+        <p>🛡️ Her unpaid security guard</p>
+        <p>💸 Her emergency ATM</p>
+        <p>🥊 Her permanent punching bag</p>
+        <p>😂 Her personal comedian</p>
+        <p>😎 Her partner in crime</p>
+        <p>❤️ And unfortunately... her BROTHER.</p>
+      </div>
+      <button class="primary" onclick="showScreen('story')">NEXT →</button>
+    </section>
+
+    <!-- NEW: replaces the old photo "memories" screen -->
+    <section class="screen" id="story">
+      <h2>OUR STORY <span>SO FAR</span> ❤️</h2>
+      <p class="hint">No photo dump yet — so here's the highlight reel, written by yours truly. Tap any card to edit it.</p>
+      <div class="photos story-grid">
+        <div class="story-card" contenteditable="true">🧒 The first thing I remember us doing together...</div>
+        <div class="story-card" contenteditable="true">😂 The time we got in trouble because of...</div>
+        <div class="story-card" contenteditable="true">🤝 A moment you had my back, no questions asked...</div>
+        <div class="story-card" contenteditable="true">📅 Something we're finally doing together this year...</div>
+      </div>
+      <button class="primary" onclick="showScreen('heart')">NEXT →</button>
+    </section>
+
+    <section class="screen" id="heart">
+      <h2>JOKES APART... ❤️</h2>
+      <div class="heart-note">
+        <p>No matter how much we fight, annoy each other, steal each other's food, or blame each other...</p>
+        <h1>I'm really lucky to have you as my sister. ❤️</h1>
+        <p>You're my best friend, my partner in crime, and my forever connection. 🫶</p>
+      </div>
+      <h1 class="rakhi">Happy Raksha Bandhan! 🎀</h1>
+      <button class="primary" onclick="showScreen('surprise')">ONE MORE SURPRISE 👀</button>
+    </section>
+
+    <section class="screen" id="surprise">
+      <h2>ONE MORE SURPRISE? 😈</h2>
+      <p class="hint">Pick one. I dare you.</p>
+      <div class="choices">
+        <button onclick="roast()">😂 Roast My Sister</button>
+        <button onclick="sweet()">❤️ Heart Touching Note</button>
+        <button onclick="confetti(); finalMessage()">🎉 CONFETTI BLAST</button>
+      </div>
+      <div id="result"></div>
+      <button class="secondary" onclick="showScreen('home')">↩ BACK HOME</button>
+    </section>
+
+  </div>
+
+  <footer>⭐ Made with ❤️ by Ravi Patel • Happy Raksha Bandhan! 🎀</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
